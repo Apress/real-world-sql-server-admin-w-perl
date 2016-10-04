@@ -1,0 +1,8 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\sortSPFiles>perl sortSPFiles.pl -d pubs -f .\test\*.* 
+	.\test\reptq2.PRC
+	.\test\reptq1.PRC
+	.\test\anotherSP.PRC
+	.\test\anSP_0.PRC
+	.\test\anSP.PRC
+	.\test\poorly_NamedSP.PRC

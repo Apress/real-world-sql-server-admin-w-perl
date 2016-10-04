@@ -1,0 +1,452 @@
+<HTML>
+<HEAD>
+<TITLE>compareDBs - Compare two databases for any schema difference</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;compareDBs - Compare two databases for any schema difference</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#usage example">USAGE EXAMPLE</A></LI>
+	<LI><A HREF="#sample output">SAMPLE OUTPUT</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>compareDBs - Compare two databases for any schema difference</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl compareDBs.pl -S&lt;Server name&gt; -D&lt;Database name&gt;
+                        -s&lt;Server name&gt; -d&lt;Database name&gt;
+                        -c 
+                        -i</PRE>
+<PRE>
+   -S specifies the name of the first SQL Server.
+   -D specifies the name of a database on the first server.
+   -s specifies the name of the second SQL Server.
+   -d specifies the name of database on the second server.
+   -i instructs the comparison to ignore any whitespace. 
+   -c makes the comparison case insensitive.</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script <EM>compareDBs.pl</EM> compares two databases to report any schema difference that may exist between
+them. This script basically the previous scripts in this chapter together. These previously discussed 
+scripts compare individual aspects of databases, and they are:</P>
+<DL>
+<DT><STRONG><A NAME="item_compareColumns%2Epl">compareColumns.pl</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_compareIndexes%2Epl">compareIndexes.pl</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_compareConstraints%2Epl">compareConstraints.pl</A></STRONG><BR>
+<DD>
+<DT><STRONG><A NAME="item_compareSPs%2Epl">compareSPs.pl</A></STRONG><BR>
+<DD>
+</DL>
+<P>The script <EM>compareDBs.pl</EM> loops through all the tables, indexes, constraints, and SPs in 
+the two databases, and compare them in turn. Comparing table columns, indexes, and constraints
+are performed with the functions <EM>compareCol()</EM>, <EM>compareIdx()</EM>, and <EM>compareConstraints()</EM>, 
+respectively. These three functions mirror the scripts discussed in Listing 5-1, Listing 5-4, 
+and Listing 5-11, respectively. They make up the function <EM>compareTables()</EM> to perform the 
+table comparison between the two databases.</P>
+<P>The comparison of the stored procedures is performed by the function <EM>compareSPs()</EM>, which 
+follows the script <EM>compareSPs.pl</EM> discussed in Listing 5-13.</P>
+<P>
+<HR>
+<H1><A NAME="usage example">USAGE EXAMPLE</A></H1>
+<P>The following is an example of running the script to compare the database pubs on the server
+SQL01 and the database pubs on the server SQL02. Whitespaces are significant and the comparison is case
+sensitive.</P>
+<PRE>
+ cmd&gt;perl compareDBs.pl -SSQL01 -Dpubs -sSQL02 -dpubs</PRE>
+<P>
+<HR>
+<H1><A NAME="sample output">SAMPLE OUTPUT</A></H1>
+<P>The following is a sample output of running the script <EM>compareDBs.pl</EM> as above:</P>
+<PRE>
+   Comparing tables (1) on SQL01 and (2) on SQL02:
+     Tables in (1), not in (2):
+      [dbo].[test],
+      [dbo].[writers],
+      [dbo].[authors1],
+      [dbo].[junk_1],
+      [dbo].[au_ref],
+      [dbo].[junk],</PRE>
+<PRE>
+     Tables not in (1), but in (2):
+      [dbo].[trash],
+      [dbo].[snaptest],
+      [dbo].[tbSysperf],
+      [dbo].[repl_test],
+      [dbo].[pub_info2]</PRE>
+<PRE>
+   Comparing common tables on both (1) and (2):</PRE>
+<PRE>
+   Comparing (1) [dbo].[stores] on SQL01.pubs and (2) [dbo].[stores] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[stores] on SQL01.pubs and (2) [dbo].[stores] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[employee] on SQL01.pubs and (2) [dbo].[employee] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[employee] on SQL01.pubs and (2) [dbo].[employee] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...
+      Keys in (1) SQL01.pubs.[dbo].[employee], not in (2) SQL02.pubs.[dbo].[employee]:
+      job_id:[dbo].[jobs]:job_id:yes</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[pub_info] on SQL01.pubs and (2) [dbo].[pub_info] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[pub_info] on SQL01.pubs and (2) [dbo].[pub_info] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[jobs] on SQL01.pubs and (2) [dbo].[jobs] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[jobs] on SQL01.pubs and (2) [dbo].[jobs] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[titleauthor] on SQL01.pubs and (2) [dbo].[titleauthor] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[titleauthor] on SQL01.pubs and (2) [dbo].[titleauthor] on SQL02.pubs:
+      Checking index diff ...
+      Indexes in (1) [dbo].[titleauthor], not in (2) [dbo].[titleauthor]:
+      UQ__titleauthor__75A278F5, UPKCL_taind, ix_ta, un_test, un_test2
+      Indexes not in (1) [dbo].[titleauthor], but in (2) [dbo].[titleauthor]:
+      PK__titleauthor__04AFB25B</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...
+      Checks in (1) SQL01.pubs.[dbo].[titleauthor], not in (2) SQL02.pubs.[dbo].[titleauthor]:
+      ([au_id] like '[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]')</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...
+      Defaults in (1) SQL01.pubs.[dbo].[titleauthor], not in (2) SQL02.pubs.[dbo].[titleauthor]:
+      royaltyper</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...
+      Keys in (1) SQL01.pubs.[dbo].[titleauthor], not in (2) SQL02.pubs.[dbo].[titleauthor]:
+      title_id:[dbo].[titles]:title_id:yes,
+      au_id,title_id:::yes,
+      au_id:[dbo].[authors]:au_id:yes</PRE>
+<PRE>
+      Checking Keys property diff ...
+      au_id,title_id:::no: (1)=UPKCL_taind, (2)=PK__titleauthor__04AFB25B</PRE>
+<PRE>
+   Comparing (1) [dbo].[titles] on SQL01.pubs and (2) [dbo].[titles] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[titles] on SQL01.pubs and (2) [dbo].[titles] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[authors] on SQL01.pubs and (2) [dbo].[authors] on SQL02.pubs:
+      Checking column diff ...
+      Columns in (1) [dbo].[authors], not in (2) [dbo].[authors]:
+      contract</PRE>
+<PRE>
+      Checking column property diff ...
+      city, Length: (1)=22, (2)=20
+      zip, AllowNulls: (1)=0, (2)=1
+      zip, Length: (1)=9, (2)=5</PRE>
+<PRE>
+   Comparing (1) [dbo].[authors] on SQL01.pubs and (2) [dbo].[authors] on SQL02.pubs:
+      Checking index diff ...
+      Indexes not in (1) [dbo].[authors], but in (2) [dbo].[authors]:
+      ix_address</PRE>
+<PRE>
+      Checking index property diff ...
+      ix_idphone, FillFactor: (1)=0, (2)=10
+      ix_idphone, PadIndex: (1)=no, (2)=yes
+      ix_idphone, Unique: (1)=yes, (2)=no</PRE>
+<PRE>
+      Checking Checks diff ...
+      Checks in (1) SQL01.pubs.[dbo].[authors], not in (2) SQL02.pubs.[dbo].[authors]:
+      ([state] like '[a-zA-Z][a-zA-Z]')</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...
+      Defaults in (1) SQL01.pubs.[dbo].[authors], not in (2) SQL02.pubs.[dbo].[authors]:
+      state</PRE>
+<PRE>
+      Checking Defaults property diff ...
+      phone: (1)=('UNKNOWN'), (2)=('N/A')</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[discounts] on SQL01.pubs and (2) [dbo].[discounts] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[discounts] on SQL01.pubs and (2) [dbo].[discounts] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[publishers] on SQL01.pubs and (2) [dbo].[publishers] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[publishers] on SQL01.pubs and (2) [dbo].[publishers] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[sales] on SQL01.pubs and (2) [dbo].[sales] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[sales] on SQL01.pubs and (2) [dbo].[sales] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...
+      Keys in (1) SQL01.pubs.[dbo].[sales], not in (2) SQL02.pubs.[dbo].[sales]:
+      title_id:[dbo].[titles]:title_id:yes</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[roysched] on SQL01.pubs and (2) [dbo].[roysched] on SQL02.pubs:
+      Checking column diff ...</PRE>
+<PRE>
+      Checking column property diff ...</PRE>
+<PRE>
+   Comparing (1) [dbo].[roysched] on SQL01.pubs and (2) [dbo].[roysched] on SQL02.pubs:
+      Checking index diff ...</PRE>
+<PRE>
+      Checking index property diff ...</PRE>
+<PRE>
+      Checking Checks diff ...</PRE>
+<PRE>
+      Checking Checks property diff ...</PRE>
+<PRE>
+      Checking Defaults diff ...</PRE>
+<PRE>
+      Checking Defaults property diff ...</PRE>
+<PRE>
+      Checking Keys diff ...
+      Keys in (1) SQL01.pubs.[dbo].[roysched], not in (2) SQL02.pubs.[dbo].[roysched]:
+      title_id:[dbo].[titles]:title_id:yes</PRE>
+<PRE>
+      Checking Keys property diff ...</PRE>
+<PRE>
+   Comparing stored procedures (1) on SQL01 and (2) on SQL02:
+     Stored procedures in (1), not in (2):
+      [dbo].[spJunk],
+      [dbo].[sp Call5],
+      [dbo].[spCall2],
+      [dbo].[spCall3],
+      [dbo].[testSP],
+      [dbo].[spCall],
+      [dbo].[pr_authors]
+     Stored procedures not in (1), but in (2):
+      [dbo].[getAuid],
+      [dbo].[usp_test],
+      [dbo].[up_abc]</PRE>
+<PRE>
+   Comparing common stored procedures on both (1) and (2):</PRE>
+<PRE>
+   Comparing (1) SQL01.pubs.[dbo].[reptq1] (2) SQL02.pubs.[dbo].[reptq1]
+      Checking SP property diff ...</PRE>
+<PRE>
+      Comparing SP code diff ...
+      Differing position: 178
+                line num: 10
+              difference:</PRE>
+<PRE>
+   GO</PRE>
+<PRE>
+    &lt;&gt; GO</PRE>
+<PRE>
+   Comparing (1) SQL01.pubs.[dbo].[reptq2] (2) SQL02.pubs.[dbo].[reptq2]
+      Checking SP property diff ...
+      AnsiNullsStatus: (1)=0, (2)=1
+      QuotedIdentifierStatus: (1)=1, (2)=0</PRE>
+<PRE>
+      Comparing SP code diff ...
+      Differing position: 108
+                line num: 3
+              difference:  16), ytd_sales</PRE>
+<PRE>
+   from &lt;&gt; 15), ytd_sales</PRE>
+<PRE>
+   from</PRE>
+<PRE>
+   Comparing (1) SQL01.pubs.[dbo].[reptq3] (2) SQL02.pubs.[dbo].[reptq3]
+      Checking SP property diff ...
+      QuotedIdentifierStatus: (1)=1, (2)=0</PRE>
+<PRE>
+      Comparing SP code diff ...</PRE>
+<PRE>
+   Comparing (1) SQL01.pubs.[dbo].[byroyalty] (2) SQL02.pubs.[dbo].[byroyalty]
+      Checking SP property diff ...
+      AnsiNullsStatus: (1)=0, (2)=1</PRE>
+<PRE>
+      Comparing SP code diff ...
+      Differing position: 48
+                line num: 3
+              difference: /* Here are some /* k &lt;&gt; select au_id from tit</PRE>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;compareDBs - Compare two databases for any schema difference</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,10 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\sortSPs>perl sortSPs.pl -d pubs -f test.sql -c 
+Stored procedures in dependency order:
+	[pubs].[dbo].[myProc]
+	[pubs].[dbo].[reptq2 - Exec]
+	[pubs].[dbo].[reptq1]
+	[pubs].[dbo].[orderSP]
+	[pubs].[dbo].[checkSP]
+	[pubs].[dbo].[cutSP]
+	[pubs].[dbo].[loadSP]

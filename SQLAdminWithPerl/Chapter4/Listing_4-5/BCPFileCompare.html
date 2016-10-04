@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>BCPFileCompare - Compare bcp files in two directories</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;BCPFileCompare - Compare bcp files in two directories</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>BCPFileCompare - Compare bcp files in two directories</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl BCPFileCompare.pl -i &lt;Dir Name1&gt; -o &lt;Dir Name2&gt; [-t]</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script was written to compare the data files used by the SQL Server bulk copy program. 
+This script helps us gain confidence that we have correctly bulk copied all the data into the server.</P>
+<P>The data files that are to be bulk cppied into SQL Server should be placed in a directory 
+specified with the -i option. After the data have been bulk cpoed into their corresponding tables,
+you then bulk copy them out to a different directory, specified with the -o option, using the same file names for the corresponding tables. 
+This script then can be used to compare the files in the two directories.</P>
+<P>The comparison is conducted in two steps:</P>
+<DL>
+<DT><STRONG><A NAME="item_Step_1">Step 1</A></STRONG><BR>
+<DD>
+The script compares the file names to see whether a file is only present in one directory, but 
+the other one.
+<P></P>
+<DT><STRONG><A NAME="item_Step_2">Step 2</A></STRONG><BR>
+<DD>
+For the files common in both directories, the script then compares the content of each file. If 
+the -t option is specified, the script treats the files as text files. The option -t should be specified
+if bcp is performed using the character mode, i.e. -c is used.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2002.01.14</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;BCPFileCompare - Compare bcp files in two directories</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,5 @@
+$VAR1 = [
+          'use pubs',
+          'sp_help',
+          'sp_helpdb'
+        ];

@@ -1,0 +1,34 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\SCANBC~1>bcp pubs.dbo."authors" in authors.txt -c -S.\apollo -T   
+SQLState = S1000, NativeError = 0
+Error = [Microsoft][ODBC SQL Server Driver]Unable to open BCP host data-file
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\SCANBC~1>bcp pubs.[dbo].sales in sales.txt -c -S.\apollo -T       
+SQLState = S1000, NativeError = 0
+Error = [Microsoft][ODBC SQL Server Driver]Unable to open BCP host data-file
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\SCANBC~1>bcp pubs..stores in stores.txt -c -S.\apollo -T          
+SQLState = S1000, NativeError = 0
+Error = [Microsoft][ODBC SQL Server Driver]Unable to open BCP host data-file
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\SCANBC~1>bcp Northwind..[Order Details] out jobs.txt -c -S.\apollo -T  
+Copy direction must be either 'in', 'out' or 'format'.
+usage: bcp {dbtable | query} {in | out | queryout | format} datafile
+  [-m maxerrors]            [-f formatfile]          [-e errfile]
+  [-F firstrow]             [-L lastrow]             [-b batchsize]
+  [-n native type]          [-c character type]      [-w wide character type]
+  [-N keep non-text native] [-V file format version] [-q quoted identifier]
+  [-C code page specifier]  [-t field terminator]    [-r row terminator]
+  [-i inputfile]            [-o outfile]             [-a packetsize]
+  [-S server name]          [-U username]            [-P password]
+  [-T trusted connection]   [-v version]             [-R regional enable]
+  [-k keep null values]     [-E keep identity values]
+  [-h "load hints"]
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\SCANBC~1>bcp "select * from pubs..jobs" queryout jobs.txt -c -S.\apollo -T 
+
+Starting copy...
+
+14 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.): total        1

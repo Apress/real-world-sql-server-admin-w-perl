@@ -1,0 +1,260 @@
+2002-04-16 00:47:03.11 server    Microsoft SQL Server  2000 - 8.00.384 (Intel X86) 
+	May 23 2001 00:02:52 
+	Copyright (c) 1988-2000 Microsoft Corporation
+	Developer Edition on Windows NT 5.0 (Build 2195: )
+
+2002-04-16 00:47:03.16 server    Copyright (C) 1988-2000 Microsoft Corporation.
+2002-04-16 00:47:03.16 server    All rights reserved.
+2002-04-16 00:47:03.16 server    Server Process ID is 1244.
+2002-04-16 00:47:03.16 server    Logging SQL Server messages in file 'e:\MSSQL\MSSQL$APOLLO\log\ERRORLOG'.
+2002-04-16 00:47:03.21 server    SQL Server is starting at priority class 'normal'(1 CPU detected).
+2002-04-16 00:47:04.62 server    SQL Server configured for thread mode processing.
+2002-04-16 00:47:04.69 server    Using dynamic lock allocation. [2500] Lock Blocks, [5000] Lock Owner Blocks.
+2002-04-16 00:47:04.73 server    Attempting to initialize Distributed Transaction Coordinator.
+2002-04-16 00:47:05.49 server    Failed to obtain TransactionDispenserInterface: XACT_E_TMNOTAVAILABLE
+2002-04-16 00:47:05.70 spid3     Starting up database 'master'.
+2002-04-16 00:47:07.21 spid3     0 transactions rolled back in database 'master' (1).
+2002-04-16 00:47:07.22 spid3     Recovery is checkpointing database 'master' (1)
+2002-04-16 00:47:07.86 server    Using 'SSNETLIB.DLL' version '8.0.382'.
+2002-04-16 00:47:07.86 spid5     Starting up database 'model'.
+2002-04-16 00:47:08.13 spid3     Server name is 'LINCHI\APOLLO'.
+2002-04-16 00:47:08.14 spid8     Starting up database 'msdb'.
+2002-04-16 00:47:08.14 spid9     Starting up database 'pubs'.
+2002-04-16 00:47:08.14 spid10    Starting up database 'Northwind'.
+2002-04-16 00:47:08.14 spid11    Starting up database 'distribution'.
+2002-04-16 00:47:08.66 spid9     Bypassing recovery for database 'pubs' because it is marked IN LOAD.
+2002-04-16 00:47:08.66 spid9     Starting up database 'repl_test'.
+2002-04-16 00:47:10.83 spid5     Clearing tempdb database.
+2002-04-16 00:47:10.91 server    SQL server listening on 172.25.70.159: 1029.
+2002-04-16 00:47:10.91 server    SQL server listening on 138.89.42.143: 1029.
+2002-04-16 00:47:10.91 server    SQL server listening on 172.51.40.45: 1029.
+2002-04-16 00:47:10.91 server    SQL server listening on 127.0.0.1: 1029.
+2002-04-16 00:47:16.38 server    SQL server listening on TCP, Shared Memory, Named Pipes.
+2002-04-16 00:47:16.38 server    SQL Server is ready for client connections
+2002-04-16 00:47:18.54 spid5     Starting up database 'tempdb'.
+2002-04-16 00:47:19.34 spid3     Recovery complete.
+2002-04-16 00:47:19.92 spid3     Launched startup procedure 'sp_MSrepl_startup'
+2002-04-16 00:54:26.78 spid52    DBCC TRACEON -1, server process ID (SPID) 52.
+2002-04-16 00:54:26.81 spid52    DBCC TRACEON 1204, server process ID (SPID) 52.
+2002-04-16 00:54:26.85 spid52    DBCC TRACEON 3506, server process ID (SPID) 52.
+2002-04-16 00:55:09.42 spid52    DBCC TRACEON -1, server process ID (SPID) 52.
+2002-04-16 00:55:09.42 spid52    DBCC TRACEON 1204, server process ID (SPID) 52.
+2002-04-16 00:55:09.42 spid52    DBCC TRACEON 3605, server process ID (SPID) 52.
+2002-04-16 00:55:19.32 spid4     
+Deadlock encountered .... Printing deadlock information
+2002-04-16 00:55:19.32 spid4     
+2002-04-16 00:55:19.32 spid4     Wait-for graph
+2002-04-16 00:55:19.32 spid4     
+2002-04-16 00:55:19.32 spid4     Node:1
+2002-04-16 00:55:19.32 spid4     KEY: 6:1977058079:1 (010086470766) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 00:55:19.32 spid4      Grant List::
+2002-04-16 00:55:19.32 spid4        Owner:0x19051280 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:52 ECID:0
+2002-04-16 00:55:19.32 spid4        SPID: 52 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 00:55:19.32 spid4        Input Buf: Language Event: select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 2
+
+commit tran
+
+
+2002-04-16 00:55:19.32 spid4      Requested By: 
+2002-04-16 00:55:19.32 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x190512e0 Cost:(0/0)
+2002-04-16 00:55:19.32 spid4     
+2002-04-16 00:55:19.32 spid4     Node:2
+2002-04-16 00:55:19.32 spid4     KEY: 6:1977058079:1 (020068e8b274) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 00:55:19.32 spid4      Grant List::
+2002-04-16 00:55:19.32 spid4        Owner:0x19051360 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:51 ECID:0
+2002-04-16 00:55:19.32 spid4        SPID: 51 ECID: 0 Statement Type: SELECT Line #: 5
+2002-04-16 00:55:19.32 spid4        Input Buf: Language Event: begin tran
+select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 2
+
+select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 1
+
+commit tran
+
+
+2002-04-16 00:55:19.32 spid4      Requested By: 
+2002-04-16 00:55:19.32 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380 Cost:(0/0)
+2002-04-16 00:55:19.32 spid4     Victim Resource Owner:
+2002-04-16 00:55:19.32 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380 Cost:(0/0)
+2002-04-16 00:56:35.00 spid52    DBCC TRACEON -1, server process ID (SPID) 52.
+2002-04-16 00:56:35.00 spid52    DBCC TRACEON 1205, server process ID (SPID) 52.
+2002-04-16 00:56:35.01 spid52    DBCC TRACEON 3605, server process ID (SPID) 52.
+2002-04-16 00:56:41.94 spid4     ----------------------------------
+2002-04-16 00:56:41.94 spid4     Starting deadlock search 10
+
+2002-04-16 00:56:41.94 spid4     Target Resource Owner:
+2002-04-16 00:56:41.94 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380
+2002-04-16 00:56:41.94 spid4      Node:1	 ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380
+2002-04-16 00:56:41.94 spid4     
+2002-04-16 00:56:41.94 spid4     End deadlock search 10 ... a deadlock was not found.
+2002-04-16 00:56:41.94 spid4     ----------------------------------
+
+2002-04-16 00:56:46.94 spid4     ----------------------------------
+2002-04-16 00:56:46.94 spid4     Starting deadlock search 11
+
+2002-04-16 00:56:46.94 spid4     Target Resource Owner:
+2002-04-16 00:56:46.94 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380
+2002-04-16 00:56:46.94 spid4      Node:1	 ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380
+2002-04-16 00:56:46.94 spid4      Node:2	 ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380
+2002-04-16 00:56:46.94 spid4      Cycle:	 ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     Deadlock cycle was encountered .... verifying cycle
+2002-04-16 00:56:46.94 spid4      Node:1	 ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380 Cost:(0/0)
+2002-04-16 00:56:46.94 spid4      Node:2	 ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380 Cost:(0/0)
+2002-04-16 00:56:46.94 spid4      Cycle:	 ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380 Cost:(0/0)
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     
+Deadlock encountered .... Printing deadlock information
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     Wait-for graph
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     Node:1
+2002-04-16 00:56:46.94 spid4     KEY: 6:1977058079:1 (010086470766) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 00:56:46.94 spid4      Grant List::
+2002-04-16 00:56:46.94 spid4        Owner:0x19051360 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:52 ECID:0
+2002-04-16 00:56:46.94 spid4        SPID: 52 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 00:56:46.94 spid4        Input Buf: Language Event: select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 2
+
+commit tran
+
+
+2002-04-16 00:56:46.94 spid4      Requested By: 
+2002-04-16 00:56:46.94 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380 Cost:(0/0)
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     Node:2
+2002-04-16 00:56:46.94 spid4     KEY: 6:1977058079:1 (020068e8b274) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 00:56:46.94 spid4      Grant List::
+2002-04-16 00:56:46.94 spid4        Owner:0x190512e0 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:51 ECID:0
+2002-04-16 00:56:46.94 spid4        SPID: 51 ECID: 0 Statement Type: SELECT Line #: 5
+2002-04-16 00:56:46.94 spid4        Input Buf: Language Event: begin tran
+select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 2
+
+select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 1
+
+commit tran
+
+
+2002-04-16 00:56:46.94 spid4      Requested By: 
+2002-04-16 00:56:46.94 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380 Cost:(0/0)
+2002-04-16 00:56:46.94 spid4     Victim Resource Owner:
+2002-04-16 00:56:46.94 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380 Cost:(0/0)
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     End deadlock search 11 ... a deadlock was found.
+2002-04-16 00:56:46.94 spid4     ----------------------------------
+
+2002-04-16 00:56:46.94 spid4     ----------------------------------
+2002-04-16 00:56:46.94 spid4     Starting deadlock search 12
+
+2002-04-16 00:56:46.94 spid4     Target Resource Owner:
+2002-04-16 00:56:46.94 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380
+2002-04-16 00:56:46.94 spid4      Node:1	 ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d380
+2002-04-16 00:56:46.94 spid4      Node:2	 ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051380
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     Previous victim encountered ... aborting search
+2002-04-16 00:56:46.94 spid4     
+2002-04-16 00:56:46.94 spid4     End deadlock search 12 ... a deadlock was not found.
+2002-04-16 00:56:46.94 spid4     ----------------------------------
+
+2002-04-16 00:57:30.28 spid52    DBCC TRACEOFF -1, server process ID (SPID) 52.
+2002-04-16 00:57:30.28 spid52    DBCC TRACEOFF 1205, server process ID (SPID) 52.
+2002-04-16 00:57:30.28 spid52    DBCC TRACEOFF 3605, server process ID (SPID) 52.
+2002-04-16 00:57:34.96 spid52    DBCC TRACEOFF -1, server process ID (SPID) 52.
+2002-04-16 00:57:34.96 spid52    DBCC TRACEOFF 1204, server process ID (SPID) 52.
+2002-04-16 00:57:34.96 spid52    DBCC TRACEOFF 3605, server process ID (SPID) 52.
+2002-04-16 00:58:24.38 spid52    DBCC TRACEON -1, server process ID (SPID) 52.
+2002-04-16 00:58:24.38 spid52    DBCC TRACEON 1204, server process ID (SPID) 52.
+2002-04-16 00:58:24.38 spid52    DBCC TRACEON 3605, server process ID (SPID) 52.
+2002-04-16 00:58:37.10 spid4     
+Deadlock encountered .... Printing deadlock information
+2002-04-16 00:58:37.10 spid4     
+2002-04-16 00:58:37.10 spid4     Wait-for graph
+2002-04-16 00:58:37.10 spid4     
+2002-04-16 00:58:37.10 spid4     Node:1
+2002-04-16 00:58:37.10 spid4     KEY: 6:1977058079:1 (010086470766) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 00:58:37.10 spid4      Grant List::
+2002-04-16 00:58:37.10 spid4        Owner:0x1904d380 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:52 ECID:0
+2002-04-16 00:58:37.10 spid4        SPID: 52 ECID: 0 Statement Type: SELECT Line #: 5
+2002-04-16 00:58:37.10 spid4        Input Buf: Language Event: begin tran
+select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 1
+
+select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 2
+
+commit tran
+
+
+2002-04-16 00:58:37.10 spid4      Requested By: 
+2002-04-16 00:58:37.10 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x19051300 Cost:(0/0)
+2002-04-16 00:58:37.10 spid4     
+2002-04-16 00:58:37.10 spid4     Node:2
+2002-04-16 00:58:37.10 spid4     KEY: 6:1977058079:1 (020068e8b274) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 00:58:37.10 spid4      Grant List::
+2002-04-16 00:58:37.10 spid4        Owner:0x19051260 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:51 ECID:0
+2002-04-16 00:58:37.10 spid4        SPID: 51 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 00:58:37.10 spid4        Input Buf: Language Event: select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 1
+
+commit tran
+
+
+2002-04-16 00:58:37.10 spid4      Requested By: 
+2002-04-16 00:58:37.10 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x19051340 Cost:(0/0)
+2002-04-16 00:58:37.10 spid4     Victim Resource Owner:
+2002-04-16 00:58:37.10 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x19051340 Cost:(0/0)
+2002-04-16 01:07:00.38 spid4     
+Deadlock encountered .... Printing deadlock information
+2002-04-16 01:07:00.38 spid4     
+2002-04-16 01:07:00.38 spid4     Wait-for graph
+2002-04-16 01:07:00.38 spid4     
+2002-04-16 01:07:00.38 spid4     Node:1
+2002-04-16 01:07:00.38 spid4     KEY: 6:1977058079:1 (03000d8f0ecc) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 01:07:00.38 spid4      Grant List::
+2002-04-16 01:07:00.38 spid4        Owner:0x1904d360 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:53 ECID:0
+2002-04-16 01:07:00.38 spid4        SPID: 53 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:07:00.38 spid4        Input Buf: Language Event: select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 1
+
+commit tran
+
+
+2002-04-16 01:07:00.38 spid4      Requested By: 
+2002-04-16 01:07:00.38 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:51 ECID:0 Ec:(0x195f1518) Value:0x1904d260 Cost:(0/0)
+2002-04-16 01:07:00.38 spid4     
+2002-04-16 01:07:00.38 spid4     Node:2
+2002-04-16 01:07:00.38 spid4     KEY: 6:1977058079:1 (010086470766) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 01:07:00.38 spid4      Grant List::
+2002-04-16 01:07:00.38 spid4        Owner:0x190512e0 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:52 ECID:0
+2002-04-16 01:07:00.38 spid4        SPID: 52 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:07:00.38 spid4        Input Buf: Language Event: select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 2
+
+commit tran
+
+2002-04-16 01:07:00.38 spid4      Requested By: 
+2002-04-16 01:07:00.38 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:53 ECID:0 Ec:(0x1969d518) Value:0x1904d2c0 Cost:(0/0)
+2002-04-16 01:07:00.38 spid4     
+2002-04-16 01:07:00.38 spid4     Node:3
+2002-04-16 01:07:00.38 spid4     KEY: 6:1977058079:1 (020068e8b274) CleanCnt:1 Mode: U Flags: 0x0
+2002-04-16 01:07:00.38 spid4      Grant List::
+2002-04-16 01:07:00.38 spid4        Owner:0x1904d3a0 Mode: U        Flg:0x0 Ref:1 Life:02000000 SPID:51 ECID:0
+2002-04-16 01:07:00.38 spid4        SPID: 51 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:07:00.38 spid4        Input Buf: Language Event: select * from employees (holdlock rowlock updlock)
+ where EmployeeID = 3
+
+commit tran
+
+
+2002-04-16 01:07:00.38 spid4      Requested By: 
+2002-04-16 01:07:00.38 spid4        ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d2a0 Cost:(0/0)
+2002-04-16 01:07:00.38 spid4     Victim Resource Owner:
+2002-04-16 01:07:00.38 spid4      ResType:LockOwner Stype:'OR' Mode: U SPID:52 ECID:0 Ec:(0x192d9518) Value:0x1904d2a0 Cost:(0/0)
+2002-04-16 01:23:22.49 server    SQL Server terminating because of system shutdown.
+2002-04-16 01:23:24.32 server    LogEvent: Failed to report the current event. Operating system error = 31(A device attached to the system is not functioning.).
+2002-04-16 01:23:32.92 spid3     SQL Server is terminating due to 'stop' request from Service Control Manager.

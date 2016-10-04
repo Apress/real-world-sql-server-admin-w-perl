@@ -1,0 +1,10 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\sortSPFiles>perl sortSPFiles.pl -d pubs -f .\test\*.* 
+$VAR1 = {
+          '[pubs].[dbo].[reptq2]' => '.\\test\\reptq2.PRC',
+          '[pubs].[dbo].[anSP 0]' => '.\\test\\anSP_0.PRC',
+          '[pubs].[dbo].[ansp]' => '.\\test\\anSP.PRC',
+          '[pubs].[dbo].[reptq1]' => '.\\test\\reptq1.PRC',
+          '[pubs].[dbo].[poorly NameSP]' => '.\\test\\poorly_NamedSP.PRC',
+          '[pubs].[dbo].[anotherSP]' => '.\\test\\anotherSP.PRC'
+        };

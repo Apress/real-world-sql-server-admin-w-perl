@@ -1,0 +1,10 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\COD5FF~1>perl compareSPs.pl -S.\apollo -Dpubs -Pdbo.byroyalty -s.\pantheon -d pubs -p dbo.byroyalty 
+Comparing (1) .\apollo.pubs.dbo.byroyalty (2) .\pantheon.pubs.dbo.byroyalty
+   Checking SP property diff ...
+	AnsiNullsStatus: (1)=0, (2)=1
+
+   Comparing SP code diff ...
+	Differing position: 48
+	          line num: 3
+	        difference: (1) /* Here are some /* k <> (2) select au_id from tit

@@ -1,0 +1,17 @@
+$VAR1 = {
+          'Script' => 'CREATE PROCEDURE reptq1 AS
+select pub_id, title_id, price, pubdate
+from titles
+where price is NOT NULL
+order by pub_id
+COMPUTE avg(price) BY pub_id
+COMPUTE avg(price)
+
+
+GO
+',
+          'QuotedIdentifierStatus' => 1,
+          'Owner' => 'dbo',
+          'AnsiNullsStatus' => 1,
+          'Startup' => 0
+        };

@@ -1,0 +1,41 @@
+$VAR1 = {
+          'double_ids' => {
+                            'ls_token_123456_6' => 'check Customer'
+                          },
+          'code' => 'use pubs
+go
+--ls_token_123456_1
+CREATE PROCEDURE ls_token_123456_2.ls_token_123456_3
+AS
+/*ls_token_123456_4*/
+
+--ls_token_123456_5
+EXEC @rc = ls_token_123456_6 \'ls_token_123456_7\', 
+                            \'ls_token_123456_8\'  
+GO
+',
+          'comments' => {
+                          'ls_token_123456_1' => ' create proc',
+                          'ls_token_123456_4' => ' created by: Linchi Shea ',
+                          'ls_token_123456_5' => ' EXEC another proce'
+                        },
+          'strings' => {
+                         'ls_token_123456_7' => 'Joe Blow',
+                         'ls_token_123456_8' => 'Executive'
+                       },
+          'bracket_ids' => {
+                             'ls_token_123456_2' => 'dbo',
+                             'ls_token_123456_3' => 'place Order'
+                           }
+        };
+use pubs
+go
+-- create proc
+CREATE PROCEDURE [dbo].[place Order]
+AS
+/* created by: Linchi Shea */
+
+-- EXEC another proce
+EXEC @rc = "check Customer" 'Joe Blow', 
+                            'Executive'  
+GO

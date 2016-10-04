@@ -1,0 +1,188 @@
+<HTML>
+<HEAD>
+<TITLE>sortSPs - Sort the stored procedures defined in a T-SQL script by dependency</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;sortSPs - Sort the stored procedures defined in a T-SQL script by dependency</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#sample usage">SAMPLE USAGE</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#identifying immediate dependencies">IDENTIFYING IMMEDIATE DEPENDENCIES</A></LI>
+	<UL>
+
+		<LI><A HREF="#representing immediate dependencies">Representing Immediate Dependencies</A></LI>
+		<LI><A HREF="#finding immediate dependencies">Finding Immediate Dependencies</A></LI>
+	</UL>
+
+	<LI><A HREF="#sorting stored procedures">SORTING STORED PROCEDURES</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>sortSPs - Sort the stored procedures defined in a T-SQL script by dependency</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+  cmd&gt;perl sortSPs.pl [-c ] [-o &lt;owner&gt;] -d &lt;db&gt; -f &lt;T-SQL file&gt;
+</PRE>
+<PRE>
+
+  Options:
+     -d    set the default database name
+     -o    set the default object owner name
+     -c    case sensitive, if specified
+     -f    name of the T-SQL script file that includes all the SPs</PRE>
+<P>
+<HR>
+<H1><A NAME="sample usage">SAMPLE USAGE</A></H1>
+<P>The following example shows the results of running the script <EM>sortSPs.pl</EM> on the
+T-SQL script file someSPs.sql, which includes the definitions of several stored
+procedures.</P>
+<PRE>
+ cmd&gt;perl sortSPs.pl -d pubs -f test.sql -c 
+ Stored procedures in dependency order:
+       '[pubs].[dbo].[myProc]',
+       '[pubs].[dbo].[reptq2 - Exec]',
+       '[pubs].[dbo].[orderSP]',
+       '[pubs].[dbo].[reptq1]',
+       '[pubs].[dbo].[checkSP]',
+       '[pubs].[dbo].[cutSP]',
+       '[pubs].[dbo].[loadSP]'</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>The script <EM>sortSPs.pl</EM> sorts the stored procedures defined in a T-SQL script file by dependency. 
+This script first scans the T-SQL script file to identify the immediate dependencies of each SP. 
+In other words, it first finds out the stored procedures directly called by every stored procedure.</P>
+<P>The script then proceeds to normalize the identifiers used in the T-SQL. This ensures that the same object
+is identified by the same normalized identifier. This is necessary because in T-SQL an object can be 
+identified in different ways. All these different identifiers are about the same object and therefore 
+should be replaced with a consistently named identifier during the sorting.</P>
+<P>This replacement of 
+identifiers with a consistent anming convention also applies to any identifier that is not fully 
+qualified. A default database name and a default owner are used to fully qualify such an identifier.</P>
+<P>Now, the script is ready to do the real work of sorting SPs by dependency. This is the job of the 
+function <EM>sortObjs()</EM>.</P>
+<P>
+<HR>
+<H1><A NAME="identifying immediate dependencies">IDENTIFYING IMMEDIATE DEPENDENCIES</A></H1>
+<P>The first step in the script <EM>sortSPs.pl</EM> is to identify the immediate dependencies of the stored
+procedures defined in the T-SQL script file. The immediate dependencies of a stored procedure are the 
+stored procedures called directly in the T-SQL script with the EXECUTE statements.</P>
+<P>Before discussing how to identify the immeidate dependencies, let's look at the data structure that
+represents the immediate dependencies.</P>
+<P>
+<H2><A NAME="representing immediate dependencies">Representing Immediate Dependencies</A></H2>
+<P>A hash of arrays is used to represent the immediate dependencies of the stored procedures defined
+in the T-SQL script. For each stored procedure defined in the T-SQL script, its name is a key in this
+hash, and the value of the hash is a reference to an array whose elements are the names of the 
+stored procedures called in the CREATE PROCEDURE statement of this stored procedure.</P>
+<P>The following is an example of the data structure:</P>
+<PRE>
+ $ref = {
+          '[pubs].[dbo].[spProc]' =&gt; [ ],
+          '[pubs].[dbo].[reptq1]' =&gt; [
+                                 '[pubs].[dbo].[reptq2 - Exec]'
+                               ],
+          '[pubs].[dbo].[reptq2 - Exec]' =&gt; [ ],
+          '[pubs].[dbo].[spCheck]' =&gt; [
+                                  '[pubs].[dbo].[reptq1]'
+                                ],
+          '[pubs].[dbo].[spCut]' =&gt; [
+                                '[pubs].[dbo].[reptq1]',
+                                '[pubs].[dbo].[spCheck]',
+                                '[pubs].[dbo].[spProc]',
+                                '[pubs].[dbo].[spOrder]'
+                              ],
+          '[pubs].[dbo].[spOrder]' =&gt; [ ],
+          '[pubs].[dbo].[spLoad]' =&gt; [
+                                 '[pubs].[dbo].[spCheck]',
+                                 '[pubs].[dbo].[spCut]',
+                                 '[pubs].[dbo].[spOrder]',
+                                 '[pubs].[dbo].[reptq1]'
+                               ]
+        };</PRE>
+<P>If an array is empty, it means that the corresponding stored procedure doesn't call any other stored
+procedure.</P>
+<P>
+<H2><A NAME="finding immediate dependencies">Finding Immediate Dependencies</A></H2>
+<P>The key steps are similar to those used in the <EM>callTree.pl</EM> script to construct the call 
+tree for a stored procedure:</P>
+<OL>
+<LI>
+Normalize the script with the function <EM>dbaNormalizeSQL()</EM> to remove the complications 
+caused by T-SQL comments, quoted strings, and delimited identifiers.
+<P></P>
+<LI>
+Split the script into batches by the batch terminator GO.
+<P></P>
+<LI>
+For each batch, parse the script of each CREATE PROCEDURE to find the stored procedures 
+called with the EXECUTE statement.
+The functions <EM>getSPCall()</EM> and <EM>findSPExec()</EM> in Listing 5-26 implement these steps.
+<P></P></OL>
+<P>
+<HR>
+<H1><A NAME="sorting stored procedures">SORTING STORED PROCEDURES</A></H1>
+<P>Having captured a hash of arrays shown previously, you can perform the following steps 
+to populate an array with the stored procedures sorted by dependency. 
+Assume that the hash of arrays is %depend, and the sorted stored 
+procedures are in @sorted:</P>
+<OL>
+<LI>
+Initialize the array @sortedSP to empty.
+<P></P>
+<LI>
+Push into @sorted those stored procedures of %depend that don’t have 
+any dependencies. If you can’t find any stored procedure with no dependency 
+and the hash %depend is not empty, there’s a circular dependency. That’s treated 
+as a fatal error condition.
+<P></P>
+<LI>
+Delete the hash entries of those stored procedures that have been pushed into @sorted 
+and remove the stored procedures from any array referenced in the hash.
+<P></P>
+<LI>
+Repeat step 2 until the hash %depend is empty.
+<P></P></OL>
+<P>These steps are recursive. Moreover, they’re not particular to sorting stored procedures 
+but are generic. As long as the immediate dependencies are captured in a hash of arrays, 
+irrespective of what each element may represent or the nature of the dependencies, 
+the outlined steps will sort the elements by dependency.</P>
+<P>The <EM>sortObjs()</EM> function in the script implements these steps.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;sortSPs - Sort the stored procedures defined in a T-SQL script by dependency</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

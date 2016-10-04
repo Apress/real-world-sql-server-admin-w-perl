@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>splitPhoneNumber - Split free-form phone numbers into the area code and the local number</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;splitPhoneNumber - Split free-form phone numbers into the area code and the local number</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<UL>
+
+		<LI><A HREF="#phone numbers in free text">Phone Numbers in Free Text</A></LI>
+		<LI><A HREF="#expacted formats">Expacted Formats</A></LI>
+		<LI><A HREF="#key regular expression">Key Regular Expression</A></LI>
+	</UL>
+
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>splitPhoneNumber - Split free-form phone numbers into the area code and the local number</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl splitPhoneNumber.pl &lt;CSV file&gt;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script was written to demonstrate the power of Perl in handling this type of text
+manipulation problems. It accepts a text file in the CSV format. The text file is assumed to
+include multiple columns, the second of which contains phone numbers in the free text format.
+The output of the script is also in the CSV format, but its second and third column now have 
+the area codes and the local numbers, respectively, extracted from the original second column.</P>
+<P>
+<H2><A NAME="phone numbers in free text">Phone Numbers in Free Text</A></H2>
+<P>The following is an example of the CSV files the script is expected to process:</P>
+<PRE>
+ &quot;1&quot;,&quot;212-647-5154&quot;,&quot;Wilson&quot;,&quot;Tom&quot;
+ &quot;2&quot;,&quot;567-3214&quot;,&quot;North&quot;,&quot;Peter&quot;
+ &quot;3&quot;,&quot;(201) 234-9865&quot;,&quot;West&quot;,&quot;Huge&quot;
+ &quot;4&quot;,&quot;732.332-2346&quot;,&quot;Hill&quot;,&quot;John&quot;
+ &quot;5&quot;,&quot;604 335-4525&quot;,&quot;Bush&quot;,&quot;Jean&quot;
+ &quot;6&quot;,&quot;2087896537&quot;,&quot;Palmer&quot;,&quot;Ben&quot;
+ &quot;7&quot;,&quot;(704) 5527212&quot;,&quot;Rogers&quot;,&quot;Ed&quot;
+ &quot;8&quot;,&quot; (734) 935  0978&quot;,&quot;Foster&quot;,&quot;Matt&quot;
+ &quot;9&quot;,&quot;201.556.3245&quot;,&quot;Newman&quot;,&quot;Mark&quot;
+ &quot;10&quot;,&quot;732,336-4245&quot;,&quot;Jones&quot;,&quot;Ted&quot;
+ &quot;11&quot;,&quot;1-204-475-3045&quot;,&quot;Newfield&quot;,&quot;Brent&quot;</PRE>
+<P>
+<H2><A NAME="expacted formats">Expacted Formats</A></H2>
+<P>The second column of the CSV file contains phone numbers that may be in any of the following 
+formats:</P>
+<OL>
+<LI>
+The phone number may start with a country code such as 1 for the US, and optionally 
+followed with a separator, which may be a hyphen, a period, or a space.
+<P></P>
+<LI>
+The phone number may or may not contain an area code, which may or may not be enclosed in
+a pair of paentheses, followed by an optional separator such as a hyphen, a comma, a period, 
+or a space.
+<P></P>
+<LI>
+The local number may or may include a separator.
+<P></P>
+<LI>
+In each of the above case, there may be arbitrary whitespaces around any element.
+<P></P></OL>
+<P>
+<H2><A NAME="key regular expression">Key Regular Expression</A></H2>
+<P>These expected formats are parsed with the following regular expression.</P>
+<PRE>
+ $phone =~ /^(?: \s*(?:\d\s*[\-\.,\s]?)?                   # in case of a prefix like 1-
+                 \s* ( \(\s*\d\d\d\s*\) | \d\d\d )         # area code
+                 \s* [\-\.,\s]? \s* )?                     # some optional separator
+             (\d\d\d) \s* [\-\.,\s]? \s* (\d\d\d\d)\s*$/x; # local number</PRE>
+<P>If you find a format in your data that is not covered by this regular expression, just modify
+the regular expression to include its pattern.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.23</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;splitPhoneNumber - Split free-form phone numbers into the area code and the local number</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

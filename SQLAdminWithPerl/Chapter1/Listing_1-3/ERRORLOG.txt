@@ -1,0 +1,40 @@
+2002-12-14 10:46:57.34 server    Microsoft SQL Server  2000 - 8.00.384 (Intel X86) 
+	May 23 2001 00:02:52 
+	Copyright (c) 1988-2000 Microsoft Corporation
+	Developer Edition on Windows NT 5.0 (Build 2195: Service Pack 2)
+
+2002-12-14 10:46:57.64 server    Copyright (C) 1988-2000 Microsoft Corporation.
+2002-12-14 10:46:57.64 server    All rights reserved.
+2002-12-14 10:46:57.64 server    Server Process ID is 320.
+2002-12-14 10:46:57.64 server    Logging SQL Server messages in file 'e:\MSSQL\MSSQL$APOLLO\log\ERRORLOG'.
+2002-12-14 10:46:58.06 server    SQL Server is starting at priority class 'normal'(1 CPU detected).
+2002-12-14 10:47:03.59 server    SQL Server configured for thread mode processing.
+2002-12-14 10:47:03.69 server    Using dynamic lock allocation. [2500] Lock Blocks, [5000] Lock Owner Blocks.
+2002-12-14 10:47:03.80 server    Attempting to initialize Distributed Transaction Coordinator.
+2002-12-14 10:47:13.34 server    Failed to obtain TransactionDispenserInterface: XACT_E_TMNOTAVAILABLE
+2002-12-14 10:47:14.15 spid3     Starting up database 'master'.
+2002-12-14 10:47:19.37 spid3     0 transactions rolled back in database 'master' (1).
+2002-12-14 10:47:19.37 spid3     Recovery is checkpointing database 'master' (1)
+2002-12-14 10:47:20.58 server    Using 'SSNETLIB.DLL' version '8.0.382'.
+2002-12-14 10:47:20.58 spid5     Starting up database 'model'.
+2002-12-14 10:47:20.85 spid3     Server name is 'LINCHI\APOLLO'.
+2002-12-14 10:47:20.96 spid8     Starting up database 'msdb'.
+2002-12-14 10:47:20.97 spid9     Starting up database 'pubs'.
+2002-12-14 10:47:20.97 spid10    Starting up database 'Northwind'.
+2002-12-14 10:47:20.97 spid11    Starting up database 'distribution'.
+2002-12-14 10:47:21.90 server    SQL server listening on 127.0.0.1: 2433.
+2002-12-14 10:47:23.11 server    SQL server listening on TCP, Shared Memory, Named Pipes.
+2002-12-14 10:47:23.11 server    SQL Server is ready for client connections
+2002-12-14 10:47:24.60 spid5     Clearing tempdb database.
+2002-12-14 10:47:26.20 spid9     Starting up database 'repl_test'.
+2002-12-14 10:47:26.44 spid11    Starting up database 'pubs1'.
+2002-12-14 10:47:27.33 spid10    Starting up database 'test'.
+2002-12-14 10:47:27.33 spid11    Bypassing recovery for database 'pubs1' because it is marked IN LOAD.
+2002-12-14 10:47:27.33 spid11    Starting up database 'Orders'.
+2002-12-14 10:47:38.11 spid5     Starting up database 'tempdb'.
+2002-12-14 10:47:39.79 spid3     Recovery complete.
+2002-12-14 10:47:40.62 spid3     Launched startup procedure 'sp_MSrepl_startup'
+2002-12-14 13:38:55.30 spid51    Error: 50000, Severity: 17, State: 1
+2002-12-14 13:38:55.30 spid51    Test message.
+2002-12-14 13:39:01.28 spid51    Error: 50000, Severity: 20, State: 1
+2002-12-14 13:39:01.28 spid51    Test message.

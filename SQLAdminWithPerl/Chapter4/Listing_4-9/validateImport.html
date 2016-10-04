@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>validateImport - validate data in a file for conformance to the expected format</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;validateImport - validate data in a file for conformance to the expected format</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#format variables">FORMAT VARIABLES</A></LI>
+	<LI><A HREF="#tests">TESTS</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>validateImport - validate data in a file for conformance to the expected format</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl validateImport.pl Data_File</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script checks whether the rows in a data file conform to the expect format. The format
+is defined with the following parameters</P>
+<PRE>
+ Field terminator  -- the character(s) that separates two consecutive fields in a row
+ Row termintor -- the character(s) that marks the end of a row
+ The number of fields in a row
+ The pattern of a field</PRE>
+<P>The script reads from the data file, one row at a time. It then splits the row by the field
+separator into an array of field values. For each field, the script checks whether it
+comply with the expected format.</P>
+<P>Such a script is useful when you bulk copy data into a SQL Server table, and want to find 
+the bad rows before performing the bulk copy. The script is also useful if you need to 
+troubleshoot bulk copy failure caused by data format problems.</P>
+<P>
+<HR>
+<H1><A NAME="format variables">FORMAT VARIABLES</A></H1>
+<P>The following four variables in the script help define the expected format:</P>
+<DL>
+<DT><STRONG><A NAME="item_%24fieldTerminator">$fieldTerminator</A></STRONG><BR>
+<DD>
+This variable specifies the <CODE>character(s)</CODE> that separates two neighboring fields
+<P></P>
+<DT><STRONG><A NAME="item_%24rowTemintor">$rowTemintor</A></STRONG><BR>
+<DD>
+This variable specifies the <CODE>character(s)</CODE> that ends each row.
+<P></P>
+<DT><STRONG><A NAME="item_%24columnCount">$columnCount</A></STRONG><BR>
+<DD>
+This variable specifies the number of fields (i.e. columns) each row is expected to have.
+<P></P>
+<DT><STRONG><A NAME="item_%columnPattern">%columnPattern</A></STRONG><BR>
+<DD>
+The keys of this hash are the column indexes, which are zero based. The corresponding
+value is a regular expression defining the expected pattern that the field must comply
+with.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="tests">TESTS</A></H1>
+<P>Two sample data files are included in the same folder where you find this script. One of 
+the files contains bad data, i.e. data that doesn't comform to the expected pattern, and
+this file is named authors_bad.txt. The other file contains perfectly formatted data, and 
+is named authors_good.txt.</P>
+<P>To test the script, run it on the command line from the current folder with one of these 
+data files.</P>
+<DL>
+<DT><STRONG><A NAME="item_Bad_Data">Bad Data</A></STRONG><BR>
+<DD>
+<PRE>
+ cmd&gt;perl validateImport.pl authors_bad.txt
+</PRE>
+<PRE>
+
+The expected output is as follows</PRE>
+<PRE>
+ ***Err: column 1722-32-1176 failed to match pattern (?-xism:^\d{3}\-\d{2}\-\d{4}$)
+         for row 1722-32-1176|Linchi|Victor|408 496-7223|10932 Bigge Rd.|Menlo Park|CA|94025|1</PRE>
+<PRE>
+ 23 rows checked in total.
+ 1 rows mismatched.</PRE>
+<DT><STRONG><A NAME="item_Good_Data">Good Data</A></STRONG><BR>
+<DD>
+<PRE>
+
+  cmd&gt;perl validateImport.pl authors_good.txt</PRE>
+<PRE>
+
+The expected output is as follows:</PRE>
+<PRE>
+ 23 rows checked in total.
+ 0 rows mismatched.</PRE>
+</DL>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2002.12.30</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;validateImport - validate data in a file for conformance to the expected format</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

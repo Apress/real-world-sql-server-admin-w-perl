@@ -1,0 +1,2 @@
+Can't locate File/Copy1.pm in @INC (@INC contains: d:/Perl/lib d:/Perl/site/lib .) at -e line 1.
+BEGIN failed--compilation aborted at -e line 1.

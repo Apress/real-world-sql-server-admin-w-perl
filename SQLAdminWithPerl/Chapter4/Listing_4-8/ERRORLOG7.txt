@@ -1,0 +1,307 @@
+2002-04-16 01:09:40.97 kernel   Microsoft SQL Server  7.00 - 7.00.842 (Intel X86) 
+	Mar  2 2000 06:49:37 
+	Copyright (c) 1988-1998 Microsoft Corporation
+	Desktop Edition on Windows NT 5.0 (Build 2195: )
+
+2002-04-16 01:09:41.02 kernel   Copyright (C) 1988-1997 Microsoft Corporation.
+2002-04-16 01:09:41.02 kernel   All rights reserved.
+2002-04-16 01:09:41.02 kernel   Logging SQL Server messages in file 'D:\MSSQL7\log\ERRORLOG'.
+2002-04-16 01:09:41.17 kernel   initconfig: Number of user connections limited to 32767.
+2002-04-16 01:09:41.17 kernel   SQL Server is starting at priority class 'normal'(1 CPU detected).
+2002-04-16 01:09:41.61 kernel   User Mode Scheduler configured for thread processing
+2002-04-16 01:09:42.85 server   Directory Size: 5387
+2002-04-16 01:09:42.89 spid1    Using dynamic lock allocation. [500] Lock Blocks, [1000] Lock Owner Blocks
+2002-04-16 01:09:43.00 spid1    Starting up database 'master'.
+2002-04-16 01:09:43.00 spid1    Opening file D:\MSSQL7\data\master.mdf. 
+2002-04-16 01:09:43.09 spid1    Opening file D:\MSSQL7\data\mastlog.ldf. 
+2002-04-16 01:09:43.23 spid1    Loading SQL Server's  Unicode collation.
+2002-04-16 01:09:43.28 spid1    Loading SQL Server's  non-Unicode sort order and character set.
+2002-04-16 01:09:43.52 spid1    1 transactions rolled forward in database 'master' (1).
+2002-04-16 01:09:43.52 spid1    0 transactions rolled back in database 'master' (1).
+2002-04-16 01:09:43.84 spid1    Starting up database 'model'.
+2002-04-16 01:09:43.84 spid1    Opening file D:\MSSQL7\DATA\model.mdf. 
+2002-04-16 01:09:44.14 spid1    Opening file D:\MSSQL7\DATA\modellog.ldf. 
+2002-04-16 01:09:44.74 spid1    Clearing tempdb database.
+2002-04-16 01:09:44.91 spid1    Creating file D:\MSSQL7\DATA\TEMPDB.MDF. 
+2002-04-16 01:09:45.89 spid1    Closing file D:\MSSQL7\DATA\TEMPDB.MDF. 
+2002-04-16 01:09:46.02 spid1    Creating file D:\MSSQL7\DATA\TEMPLOG.LDF. 
+2002-04-16 01:09:46.66 spid1    Closing file D:\MSSQL7\DATA\TEMPLOG.LDF. 
+2002-04-16 01:09:46.71 spid1    Opening file D:\MSSQL7\DATA\TEMPDB.MDF. 
+2002-04-16 01:09:46.76 spid1    Opening file D:\MSSQL7\DATA\TEMPLOG.LDF. 
+2002-04-16 01:09:48.88 spid1    Closing file D:\MSSQL7\DATA\TEMPDB.MDF. 
+2002-04-16 01:09:49.09 spid1    Closing file D:\MSSQL7\DATA\TEMPLOG.LDF. 
+2002-04-16 01:09:49.16 spid1    Starting up database 'tempdb'.
+2002-04-16 01:09:49.16 spid1    Opening file D:\MSSQL7\DATA\TEMPDB.MDF. 
+2002-04-16 01:09:49.35 spid1    Opening file D:\MSSQL7\DATA\TEMPLOG.LDF. 
+2002-04-16 01:09:50.80 spid1    Server name is 'LINCHI'.
+2002-04-16 01:09:50.80 kernel   Using 'SQLEVN70.DLL' version '7.00.842'.
+2002-04-16 01:09:50.80 kernel   Using 'OPENDS60.DLL' version '7.00.00.0839'.
+2002-04-16 01:09:50.84 ods      Using 'SSNMPN70.DLL' version '7.0.694' to listen on '\\.\pipe\sql\query'.
+2002-04-16 01:09:50.84 ods      Using 'SSMSSO70.DLL' version '7.0.694' to listen on '1433'.
+2002-04-16 01:09:51.00 spid1    Skipping startup of clean database id 4
+2002-04-16 01:09:51.07 spid1    Skipping startup of clean database id 5
+2002-04-16 01:09:51.07 spid1    Skipping startup of clean database id 6
+2002-04-16 01:09:51.17 spid1    Recovery complete.
+2002-04-16 01:09:51.17 spid1    SQL Server's Unicode collation is:
+2002-04-16 01:09:51.18 spid1            'English' (ID = 1033). 
+2002-04-16 01:09:51.18 spid1            comparison style = 196611.
+2002-04-16 01:09:51.18 spid1    SQL Server's non-Unicode sort order is:
+2002-04-16 01:09:51.18 spid1            'nocase_iso' (ID = 52).
+2002-04-16 01:09:51.18 spid1    SQL Server's non-Unicode character set is:
+2002-04-16 01:09:51.18 spid1            'iso_1' (ID = 1).
+2002-04-16 01:10:40.88 spid7    Starting up database 'Northwind'.
+2002-04-16 01:10:40.88 spid7    Opening file D:\MSSQL7\DATA\northwnd.mdf. 
+2002-04-16 01:10:40.98 spid7    Opening file D:\MSSQL7\DATA\northwnd.ldf. 
+2002-04-16 01:11:24.03 spid7    DBCC TRACEON -1, server process ID (SPID) 7.
+2002-04-16 01:11:24.05 spid7    DBCC TRACEON 1204, server process ID (SPID) 7.
+2002-04-16 01:11:24.05 spid7    DBCC TRACEON 3605, server process ID (SPID) 7.
+2002-04-16 01:12:05.58 spid2    
+**** Starting deadlock search: SPID 9 ****
+2002-04-16 01:12:05.58 spid2    --- Searching deadlock
+2002-04-16 01:12:05.58 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:05.58 spid2     Grant List::
+2002-04-16 01:12:05.58 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:05.58 spid2     Wait List:
+2002-04-16 01:12:05.58 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:12:10.59 spid2    
+**** Starting deadlock search: SPID 7 ****
+2002-04-16 01:12:10.59 spid2    --- Searching deadlock
+2002-04-16 01:12:10.59 spid2    KEY: 6:117575457:1 (020068e8b274) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:10.59 spid2     Grant List::
+2002-04-16 01:12:10.59 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:12:10.59 spid2     Wait List:
+2002-04-16 01:12:10.59 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:10.59 spid2    
+**** Starting deadlock search: SPID 9 ****
+2002-04-16 01:12:10.59 spid2    --- Searching deadlock
+2002-04-16 01:12:10.59 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:10.59 spid2     Grant List::
+2002-04-16 01:12:10.59 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:10.59 spid2     Wait List:
+2002-04-16 01:12:10.59 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:12:10.59 spid2    --- Searching deadlock
+2002-04-16 01:12:10.59 spid2    KEY: 6:117575457:1 (020068e8b274) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:10.59 spid2     Grant List::
+2002-04-16 01:12:10.59 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:12:10.59 spid2     Wait List:
+2002-04-16 01:12:10.59 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:15.60 spid2    
+**** Starting deadlock search: SPID 7 ****
+2002-04-16 01:12:15.60 spid2    --- Searching deadlock
+2002-04-16 01:12:15.60 spid2    KEY: 6:117575457:1 (020068e8b274) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:15.60 spid2     Grant List::
+2002-04-16 01:12:15.60 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:12:15.60 spid2     Wait List:
+2002-04-16 01:12:15.60 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:15.60 spid2    --- Searching deadlock
+2002-04-16 01:12:15.60 spid2    KEY: 6:117575457:1 (03000d8f0ecc) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:15.60 spid2     Grant List::
+2002-04-16 01:12:15.60 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:12:15.60 spid2     Wait List:
+2002-04-16 01:12:15.60 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:12:15.60 spid2    --- Searching deadlock
+2002-04-16 01:12:15.60 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:15.60 spid2     Grant List::
+2002-04-16 01:12:15.60 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:15.60 spid2     Wait List:
+2002-04-16 01:12:15.60 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:12:15.60 spid2    *** Deadlock Detected ***
+2002-04-16 01:12:15.60 spid2     ==> Process 7 chosen as deadlock victim
+2002-04-16 01:12:15.60 spid2     == Deadlock Detected at: 2002-04-16 01:12:15.60
+2002-04-16 01:12:15.60 spid2     == Session participant information:
+2002-04-16 01:12:15.60 spid2     SPID: 7 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:12:15.63 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   2         c o m m i t   t r a n         
+2002-04-16 01:12:15.63 spid2     SPID: 9 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:12:15.63 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   1         c o m m i t   t r a n     
+2002-04-16 01:12:15.63 spid2     SPID: 8 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:12:15.63 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   3         c o m m i t   t r a n         
+2002-04-16 01:12:15.63 spid2    
+2002-04-16 01:12:15.63 spid2     == Deadlock Lock participant information:
+2002-04-16 01:12:15.63 spid2     == Lock: KEY: 6:117575457:1 (010086470766)
+2002-04-16 01:12:15.63 spid2     Database: Northwind
+2002-04-16 01:12:15.63 spid2     Table: Employees
+2002-04-16 01:12:15.63 spid2     Index: PK_Employees
+2002-04-16 01:12:15.63 spid2      - Held by: SPID 7 ECID 0 Mode "IS-U"
+2002-04-16 01:12:15.63 spid2      - Requested by: SPID 9 ECID 0 Mode "IS-U"
+2002-04-16 01:12:15.63 spid2     == Lock: KEY: 6:117575457:1 (03000d8f0ecc)
+2002-04-16 01:12:15.63 spid2     Database: Northwind
+2002-04-16 01:12:15.63 spid2     Table: Employees
+2002-04-16 01:12:15.63 spid2     Index: PK_Employees
+2002-04-16 01:12:15.63 spid2      - Held by: SPID 9 ECID 0 Mode "IS-U"
+2002-04-16 01:12:15.63 spid2      - Requested by: SPID 8 ECID 0 Mode "IS-U"
+2002-04-16 01:12:15.63 spid2     == Lock: KEY: 6:117575457:1 (020068e8b274)
+2002-04-16 01:12:15.63 spid2     Database: Northwind
+2002-04-16 01:12:15.63 spid2     Table: Employees
+2002-04-16 01:12:15.63 spid2     Index: PK_Employees
+2002-04-16 01:12:15.63 spid2      - Held by: SPID 8 ECID 0 Mode "IS-U"
+2002-04-16 01:12:15.63 spid2      - Requested by: SPID 7 ECID 0 Mode "IS-U"
+2002-04-16 01:12:15.63 spid2    
+**** Starting deadlock search: SPID 8 ****
+2002-04-16 01:12:15.63 spid2    --- Searching deadlock
+2002-04-16 01:12:15.63 spid2    KEY: 6:117575457:1 (03000d8f0ecc) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:15.63 spid2     Grant List::
+2002-04-16 01:12:15.63 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:12:15.63 spid2     Wait List:
+2002-04-16 01:12:15.63 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:12:15.63 spid2    --- Searching deadlock
+2002-04-16 01:12:15.63 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:15.63 spid2     Grant List::
+2002-04-16 01:12:15.63 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:15.63 spid2     Wait List:
+2002-04-16 01:12:15.63 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:12:15.63 spid2    
+**** Starting deadlock search: SPID 9 ****
+2002-04-16 01:12:15.63 spid2    --- Searching deadlock
+2002-04-16 01:12:15.63 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:12:15.63 spid2     Grant List::
+2002-04-16 01:12:15.63 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:12:15.63 spid2     Wait List:
+2002-04-16 01:12:15.63 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:16:57.11 spid7    DBCC TRACEON -1, server process ID (SPID) 7.
+2002-04-16 01:16:57.11 spid7    DBCC TRACEON 1205, server process ID (SPID) 7.
+2002-04-16 01:16:57.11 spid7    DBCC TRACEON 3605, server process ID (SPID) 7.
+2002-04-16 01:17:21.10 spid2    
+**** Starting deadlock search: SPID 9 ****
+2002-04-16 01:17:21.10 spid2    --- Searching deadlock
+2002-04-16 01:17:21.10 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:21.10 spid2     Grant List::
+2002-04-16 01:17:21.10 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:21.10 spid2     Wait List:
+2002-04-16 01:17:21.10 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:17:26.11 spid2    
+**** Starting deadlock search: SPID 7 ****
+2002-04-16 01:17:26.11 spid2    --- Searching deadlock
+2002-04-16 01:17:26.11 spid2    KEY: 6:117575457:1 (020068e8b274) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:26.11 spid2     Grant List::
+2002-04-16 01:17:26.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:17:26.11 spid2     Wait List:
+2002-04-16 01:17:26.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:26.11 spid2    
+**** Starting deadlock search: SPID 9 ****
+2002-04-16 01:17:26.11 spid2    --- Searching deadlock
+2002-04-16 01:17:26.11 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:26.11 spid2     Grant List::
+2002-04-16 01:17:26.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:26.11 spid2     Wait List:
+2002-04-16 01:17:26.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:17:26.11 spid2    --- Searching deadlock
+2002-04-16 01:17:26.11 spid2    KEY: 6:117575457:1 (020068e8b274) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:26.11 spid2     Grant List::
+2002-04-16 01:17:26.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:17:26.11 spid2     Wait List:
+2002-04-16 01:17:26.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:31.11 spid2    
+**** Starting deadlock search: SPID 7 ****
+2002-04-16 01:17:31.11 spid2    --- Searching deadlock
+2002-04-16 01:17:31.11 spid2    KEY: 6:117575457:1 (020068e8b274) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:31.11 spid2     Grant List::
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:17:31.11 spid2     Wait List:
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:31.11 spid2    --- Searching deadlock
+2002-04-16 01:17:31.11 spid2    KEY: 6:117575457:1 (03000d8f0ecc) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:31.11 spid2     Grant List::
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:17:31.11 spid2     Wait List:
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:17:31.11 spid2    --- Searching deadlock
+2002-04-16 01:17:31.11 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:31.11 spid2     Grant List::
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:31.11 spid2     Wait List:
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:17:31.11 spid2    *** Deadlock Detected ***
+2002-04-16 01:17:31.11 spid2     ==> Process 7 chosen as deadlock victim
+2002-04-16 01:17:31.11 spid2     == Deadlock Detected at: 2002-04-16 01:17:31.11
+2002-04-16 01:17:31.11 spid2     == Session participant information:
+2002-04-16 01:17:31.11 spid2     SPID: 7 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:17:31.11 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   2         c o m m i t   t r a n         
+2002-04-16 01:17:31.11 spid2     SPID: 9 ECID: 0 Statement Type: SELECT Line #: 5
+2002-04-16 01:17:31.11 spid2     Input Buf: b e g i n   t r a n     s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   3         s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   1         c o m m i t   t r a n         
+2002-04-16 01:17:31.11 spid2     SPID: 8 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:17:31.11 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   3         c o m m i t   t r a n         
+2002-04-16 01:17:31.11 spid2    
+2002-04-16 01:17:31.11 spid2     == Deadlock Lock participant information:
+2002-04-16 01:17:31.11 spid2     == Lock: KEY: 6:117575457:1 (010086470766)
+2002-04-16 01:17:31.11 spid2     Database: Northwind
+2002-04-16 01:17:31.11 spid2     Table: Employees
+2002-04-16 01:17:31.11 spid2     Index: PK_Employees
+2002-04-16 01:17:31.11 spid2      - Held by: SPID 7 ECID 0 Mode "IS-U"
+2002-04-16 01:17:31.11 spid2      - Requested by: SPID 9 ECID 0 Mode "IS-U"
+2002-04-16 01:17:31.11 spid2     == Lock: KEY: 6:117575457:1 (03000d8f0ecc)
+2002-04-16 01:17:31.11 spid2     Database: Northwind
+2002-04-16 01:17:31.11 spid2     Table: Employees
+2002-04-16 01:17:31.11 spid2     Index: PK_Employees
+2002-04-16 01:17:31.11 spid2      - Held by: SPID 9 ECID 0 Mode "IS-U"
+2002-04-16 01:17:31.11 spid2      - Requested by: SPID 8 ECID 0 Mode "IS-U"
+2002-04-16 01:17:31.11 spid2     == Lock: KEY: 6:117575457:1 (020068e8b274)
+2002-04-16 01:17:31.11 spid2     Database: Northwind
+2002-04-16 01:17:31.11 spid2     Table: Employees
+2002-04-16 01:17:31.11 spid2     Index: PK_Employees
+2002-04-16 01:17:31.11 spid2      - Held by: SPID 8 ECID 0 Mode "IS-U"
+2002-04-16 01:17:31.11 spid2      - Requested by: SPID 7 ECID 0 Mode "IS-U"
+2002-04-16 01:17:31.11 spid2    
+**** Starting deadlock search: SPID 8 ****
+2002-04-16 01:17:31.11 spid2    --- Searching deadlock
+2002-04-16 01:17:31.11 spid2    KEY: 6:117575457:1 (03000d8f0ecc) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:31.11 spid2     Grant List::
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:17:31.11 spid2     Wait List:
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:8 ECID:0
+2002-04-16 01:17:31.11 spid2    --- Searching deadlock
+2002-04-16 01:17:31.11 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:31.11 spid2     Grant List::
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:31.11 spid2     Wait List:
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:17:31.11 spid2    
+**** Starting deadlock search: SPID 9 ****
+2002-04-16 01:17:31.11 spid2    --- Searching deadlock
+2002-04-16 01:17:31.11 spid2    KEY: 6:117575457:1 (010086470766) CleanCnt:2 Mode: IS-U Flags: 0x0
+2002-04-16 01:17:31.11 spid2     Grant List::
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:7 ECID:0
+2002-04-16 01:17:31.11 spid2     Wait List:
+2002-04-16 01:17:31.11 spid2       Mode: IS-U     Flg:0x0 Ref:1 Life:02000000 SPID:9 ECID:0
+2002-04-16 01:18:31.63 spid7    DBCC TRACEOFF -1, server process ID (SPID) 7.
+2002-04-16 01:18:31.64 spid7    DBCC TRACEOFF 1205, server process ID (SPID) 7.
+2002-04-16 01:18:31.64 spid7    DBCC TRACEOFF 3605, server process ID (SPID) 7.
+2002-04-16 01:20:18.96 spid7    DBCC TRACEON -1, server process ID (SPID) 7.
+2002-04-16 01:20:18.96 spid7    DBCC TRACEON 1204, server process ID (SPID) 7.
+2002-04-16 01:20:18.96 spid7    DBCC TRACEON 3605, server process ID (SPID) 7.
+2002-04-16 01:20:46.39 spid2    *** Deadlock Detected ***
+2002-04-16 01:20:46.39 spid2     ==> Process 7 chosen as deadlock victim
+2002-04-16 01:20:46.39 spid2     == Deadlock Detected at: 2002-04-16 01:20:46.39
+2002-04-16 01:20:46.39 spid2     == Session participant information:
+2002-04-16 01:20:46.39 spid2     SPID: 7 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:20:46.39 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   2         c o m m i t   t r a n         
+2002-04-16 01:20:46.39 spid2     SPID: 9 ECID: 0 Statement Type: SELECT Line #: 1
+2002-04-16 01:20:46.39 spid2     Input Buf: s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   1         c o m m i t   t r a n         
+2002-04-16 01:20:46.39 spid2     SPID: 8 ECID: 0 Statement Type: SELECT Line #: 5
+2002-04-16 01:20:46.39 spid2     Input Buf: b e g i n   t r a n     s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   2         s e l e c t   *   f r o m   e m p l o y e e s   ( h o l d l o c k   r o w l o c k   u p d l o c k )       w h e r e   E m p l o y e e I D   =   3         c o m m i t   t r a n         
+2002-04-16 01:20:46.39 spid2    
+2002-04-16 01:20:46.39 spid2     == Deadlock Lock participant information:
+2002-04-16 01:20:46.39 spid2     == Lock: KEY: 6:117575457:1 (010086470766)
+2002-04-16 01:20:46.39 spid2     Database: Northwind
+2002-04-16 01:20:46.39 spid2     Table: Employees
+2002-04-16 01:20:46.39 spid2     Index: PK_Employees
+2002-04-16 01:20:46.39 spid2      - Held by: SPID 7 ECID 0 Mode "IS-U"
+2002-04-16 01:20:46.39 spid2      - Requested by: SPID 9 ECID 0 Mode "IS-U"
+2002-04-16 01:20:46.39 spid2     == Lock: KEY: 6:117575457:1 (03000d8f0ecc)
+2002-04-16 01:20:46.39 spid2     Database: Northwind
+2002-04-16 01:20:46.39 spid2     Table: Employees
+2002-04-16 01:20:46.39 spid2     Index: PK_Employees
+2002-04-16 01:20:46.39 spid2      - Held by: SPID 9 ECID 0 Mode "IS-U"
+2002-04-16 01:20:46.39 spid2      - Requested by: SPID 8 ECID 0 Mode "IS-U"
+2002-04-16 01:20:46.39 spid2     == Lock: KEY: 6:117575457:1 (020068e8b274)
+2002-04-16 01:20:46.39 spid2     Database: Northwind
+2002-04-16 01:20:46.39 spid2     Table: Employees
+2002-04-16 01:20:46.39 spid2     Index: PK_Employees
+2002-04-16 01:20:46.39 spid2      - Held by: SPID 8 ECID 0 Mode "IS-U"
+2002-04-16 01:20:46.39 spid2      - Requested by: SPID 7 ECID 0 Mode "IS-U"
+2002-04-16 01:23:21.63 kernel   SQL Server terminating because of system shutdown.
+2002-04-16 01:23:28.96 kernel   LogEvent: Failed to report the current event. Operating system error = 31(A device attached to the system is not functioning.).
+2002-04-16 01:23:31.53 spid1    Closing file D:\MSSQL7\DATA\northwnd.mdf. 
+2002-04-16 01:23:32.04 spid1    Closing file D:\MSSQL7\DATA\northwnd.ldf. 
+2002-04-16 01:23:32.36 spid1    Closing file D:\MSSQL7\DATA\model.mdf. 
+2002-04-16 01:23:32.49 spid1    Closing file D:\MSSQL7\DATA\modellog.ldf. 
+2002-04-16 01:23:32.61 kernel   SQL Server is terminating due to 'stop' request from Service Control Manager.

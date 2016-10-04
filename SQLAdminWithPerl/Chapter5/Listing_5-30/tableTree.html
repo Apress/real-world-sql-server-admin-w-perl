@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>tableTree - Produce a reference tree for a tree</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;tableTree - Produce a reference tree for a tree</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#sample output">SAMPLE OUTPUT</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>tableTree - Produce a reference tree for a tree</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+  cmd&gt;perl tableTree.pl -S &lt;server name&gt; -D &lt;database name&gt; -T &lt;table name&gt;
+</PRE>
+<PRE>
+
+  Options:
+     -S    the name of the SQL Server instance
+     -D    the name of the database where the table is created
+     -T    the name of the table</PRE>
+<P>
+<HR>
+<H1><A NAME="sample output">SAMPLE OUTPUT</A></H1>
+<P>This example shows the reference tree for the table pubs.dbo.titleauthor in the instance APOLLO
+on the local server.</P>
+<PRE>
+ cmd&gt;perl tableTree.pl -S .\APOLLO -D pubs -T dbo.titleauthor 
+ Table reference tree for: dbo.titleauthor
+       --&gt; [dbo].[titles]
+             --&gt; [dbo].[publishers]
+                   --&gt; [dbo].[countries]
+       --&gt; [dbo].[authors]</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script allows you to find all the tables that depend on a given table through the
+foreign key constraints. This produces a tree-like structure with the given table as the root of the
+tree. The leaves of the tree are the tables that don't have any foreign keys.</P>
+<P>The core of this script is a recusive function <EM>getRefTree()</EM>. For a given table, this function loops
+through all the child tables and apply the function itself to each of the child tables. When they return
+with a table reference tree for each, the function assembles then into the final tree for the table
+specified on the command line.</P>
+<P>The foreign key information for a given table is retrieved with the function <EM>dbaGetReferencedTables()</EM>, 
+which is imported from the module SQLDBA::SQLDMO. More specifically, the function 
+<EM>dbaGetReferencedTables()</EM> retrieves the names of the tables referenced through foreign keys.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;tableTree - Produce a reference tree for a tree</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>callTree - Produce a call tree for a given stored procedure</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;callTree - Produce a call tree for a given stored procedure</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#sample output">SAMPLE OUTPUT</A></LI>
+	<LI><A HREF="#constructing the call tree">CONSTRUCTING THE CALL TREE</A></LI>
+	<LI><A HREF="#data structure">DATA STRUCTURE</A></LI>
+	<LI><A HREF="#note">NOTE</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>callTree - Produce a call tree for a given stored procedure</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl callTree.pl -S&lt;Server name&gt; -D&lt;Database name&gt; -P&lt;SP Name&gt;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script finds the call tree for a given stored procedure. The call tree of a stored procedure
+is the tree-like relationship among the stored procedures. Each node of the tree represents a 
+stored procedure with <EM>the</EM> stored procedure at the root of the tree. For any node in the tree, its 
+parent is the stored procedure that calls it and its children are the stored procedures that it calls.</P>
+<P>Such a call tree describes the dependencies among the stored procedures.</P>
+<P>
+<HR>
+<H1><A NAME="sample output">SAMPLE OUTPUT</A></H1>
+<P>The following example shows the call tree when the script <EM>callTree.pl</EM> is applied to the stored procedure
+NYSQL01.pubs.dbo.spCall.</P>
+<PRE>
+ cmd&gt;perl callTree.pl -S NYSQL01 -D pubs -P dbo.spCall
+ Call tree for: spCall
+       --&gt; pubs.dbo.spCall2
+                    --&gt; pubs.dbo.spCall3
+                               --&gt; Northwind.dbo.reptq4
+                                         --&gt; Northwind.dbo.reptq5
+                    --&gt; pubs.dbo.reptq2
+       --&gt; pubs.dbo.reptq1
+       --&gt; pubs.dbo.reptq3</PRE>
+<P>In this example, the stored procedure spCall calls three stored procedures directly: <EM>pubs.dbo.spCall2</EM>,
+<EM>pubs.dbo.reptq1</EM>, and <EM>pubs.dbo.reptq3</EM>. The stored procedure <EM>pubs.dbo.spCall2</EM> in turns calls two stored
+procedures, <EM>pubs.dbo.spCall3</EM> and <EM>pubs.dbo.reptq2</EM>. Furthermore, the stored procedure <EM>pubs.dbo.spCall3</EM>
+calls the stored procedure <EM>Northwind.dbo.reptq4</EM>, which in turn calls <EM>Northwind.dbo.reptq5</EM>.</P>
+<P>
+<HR>
+<H1><A NAME="constructing the call tree">CONSTRUCTING THE CALL TREE</A></H1>
+<P>Given a stored procedure, the process to construct its call tree is as follows:</P>
+<OL>
+<LI>
+Use <EM>dbaScriptSP2()</EM> to script out the T-SQL code of the stored procedure.
+<P></P>
+<LI>
+Apply <EM>findSPCalls()</EM> to find all its immediate child procedures.
+<P></P>
+<LI>
+For each of the child stored procedure, construct its call tree.
+<P></P>
+<LI>
+Put all child call trees together in a hash with the names of the child stored 
+procedures as the keys. Return a reference to this hash as the call tree of the 
+stored procedure.
+<P></P></OL>
+<P>Obviously, this process is recursive in nature. The recursion terminates when a 
+stored procedure doesn'’t call any other stored procedure. This process is implemented in 
+the function <EM>getCallTree()</EM> shown in Listing 5-20.</P>
+<P>
+<HR>
+<H1><A NAME="data structure">DATA STRUCTURE</A></H1>
+<P>For the output shown above, the following data structure stores the call tree:</P>
+<PRE>
+ $callTreeRef = {  
+            'pubs.dbo.reptq3' =&gt; { },
+            'pubs.dbo.spCall2' =&gt; { 
+                      'pubs.dbo.reptq2' =&gt; { },
+                      'pubs.dbo.spCall3' =&gt; { 
+                                              'Northwind.dbo.reptq4' =&gt; {
+                                                  'Northwind.dbo.reptq5' =&gt; { }
+                                              },
+                       },
+                      'pubs.dbo.reptq1' =&gt; { }
+   };</PRE>
+<P>Note the beauty of this data structure. This is a nested hash of hashes to an arbitrary number of 
+levels.</P>
+<P>
+<HR>
+<H1><A NAME="note">NOTE</A></H1>
+<P>The <EM>callTree.pl</EM> script doesn't apply to T-SQL stored procedure recursive calls. In other words, 
+if a stored procedure directly or indirectly calls itself, the <EM>callTree.pl</EM> script will abort.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;callTree - Produce a call tree for a given stored procedure</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

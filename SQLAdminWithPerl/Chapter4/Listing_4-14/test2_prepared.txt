@@ -1,0 +1,9 @@
+09/08/2002 23:01:21.703	LINCHI	PhysicalDisk	0 C: G: D: E:	% Disk Time	5.013135800446435e-007
+09/08/2002 23:01:21.703	LINCHI	Process	sqlservr#1	Working Set	13852672
+09/08/2002 23:01:21.703	LINCHI	Process	sqlservr	Working Set	5488640
+09/08/2002 23:01:26.710	LINCHI	PhysicalDisk	0 C: G: D: E:	% Disk Time	6.5561383191370757
+09/08/2002 23:01:26.710	LINCHI	Process	sqlservr#1	Working Set	13852672
+09/08/2002 23:01:26.710	LINCHI	Process	sqlservr	Working Set	5488640
+09/08/2002 23:01:31.717	LINCHI	PhysicalDisk	0 C: G: D: E:	% Disk Time	20.37215409809874
+09/08/2002 23:01:31.717	LINCHI	Process	sqlservr#1	Working Set	13852672
+09/08/2002 23:01:31.717	LINCHI	Process	sqlservr	Working Set	5488640

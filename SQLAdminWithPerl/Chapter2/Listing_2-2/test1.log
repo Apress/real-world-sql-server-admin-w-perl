@@ -1,0 +1,3 @@
+-o siwtch is: 1
+-i switch: error.log
+-p switch: output.log

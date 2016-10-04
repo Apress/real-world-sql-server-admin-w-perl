@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<TITLE>importErrorlog - Reformat a SQL Server errorlog for bulk copy program</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;importErrorlog - Reformat a SQL Server errorlog for bulk copy program</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>importErrorlog - Reformat a SQL Server errorlog for bulk copy program</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl importErrorlog.pl Errorlog_File &gt; Formatted_Errorlog_File</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script converts a SQL Server errorlog into a consistent format ready for 
+the bulk copy program. The new format uses the pipe symbol as the field terminator
+and the string @#$ as the row terminator.</P>
+<P>A SQL Server errorlog entry begins with a date/time string and finishes just before
+the next date/time string. Note that a SQL Server errorlog entry cna span multiple 
+lines. Also, note that even though a SQL Server errorlog entry is already divided into
+several fields, separated by space. The bulk copy program can't rely on the spaces to 
+determine where one field ends and the next begins. There are often too many embedded
+spaces, which makes spaces unsuitable as the field termintor.</P>
+<P>Despite that its name may suggests otherwise, importErrorlog.pl doesn't really import 
+anything anywhere. It merely reformat a data file for bulk copy. Once the data is 
+massaged into the expected format, performing bulk copy becomes easy.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;importErrorlog - Reformat a SQL Server errorlog for bulk copy program</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

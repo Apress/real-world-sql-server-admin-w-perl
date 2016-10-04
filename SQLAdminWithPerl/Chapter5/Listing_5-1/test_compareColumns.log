@@ -1,0 +1,13 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\compareColumns>rem the servers, databases, and tables are all hard coded for demo purposes 
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\compareColumns>perl compareColumns.pl 
+Comparing (1) dbo.authors on .\apollo.pubs and (2) authors on .\pantheon.pubs:
+   Checking column diff ...
+	Columns in (1) dbo.authors, not in (2) authors:
+	contract
+
+   Checking column property diff ...
+	zip, AllowNulls: (1)=0, (2)=1
+	zip, Length: (1)=9, (2)=5
+	city, Length: (1)=22, (2)=20

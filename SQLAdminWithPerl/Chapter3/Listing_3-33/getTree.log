@@ -1,0 +1,19 @@
+putOrder:
+$VAR1 = {
+          'getPrice' => {
+                          'calcDisc' => {}
+                        },
+          'getStock' => {
+                          'getInStock' => {},
+                          'getOutStock' => {
+                                             'getLog' => {}
+                                           }
+                        },
+          'seeCredit' => {
+                           'isBad' => {}
+                         }
+        };
+seeCredit:
+$VAR1 = {
+          'isBad' => {}
+        };

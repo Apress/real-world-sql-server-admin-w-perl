@@ -1,0 +1,12 @@
+$status = {
+            'NJSQL01' => {
+                           'FailedConsecutiveTimes' => 2,
+                           'LastAlertedTime' => '2003-01-01 04:15:24',
+                           'LastFailedTime' => '2003-01-03 22:25:45'
+                         },
+            'NYSQL01' => {
+                           'FailedConsecutiveTimes' => 3,
+                           'LastAlertedTime' => '2003-01-03 20:10:52',
+                           'LastFailedTime' => '2003-01-03 23:20:10'
+                         }
+          };

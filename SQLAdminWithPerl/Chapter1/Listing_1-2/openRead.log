@@ -1,0 +1,25 @@
+This is a test file.
+The file content is irrelevant.
+
+
+ Volume in drive D is Local Disk
+ Volume Serial Number is E4F4-73C0
+
+ Directory of D:\DBA\Articles\PERLSQ~1\Chapter1
+
+07/25/2003  01:11a      <DIR>          .
+07/25/2003  01:11a      <DIR>          ..
+12/16/2002  01:45a      <DIR>          addArray
+01/03/2003  06:20p      <DIR>          addHash
+12/17/2002  09:39a      <DIR>          command
+12/10/2002  04:07p      <DIR>          Command_Line_Arguments
+12/17/2002  09:52a      <DIR>          findArrayElements
+12/14/2002  05:39p      <DIR>          findLinePattern
+07/25/2003  01:02a      <DIR>          Listing_1-1
+07/25/2003  01:13a      <DIR>          Listing_1-2
+12/17/2002  09:16a      <DIR>          reference
+12/15/2002  05:44p      <DIR>          writeFile
+               0 File(s)              0 bytes
+              12 Dir(s)     410,059,776 bytes free
+
+==End test.txt==

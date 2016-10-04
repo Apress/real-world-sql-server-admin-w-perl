@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<TITLE>compareSPs - Compare two stored procedures for difference</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;compareSPs - Compare two stored procedures for difference</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#data structure">DATA STRUCTURE</A></LI>
+	<LI><A HREF="#normalizing tsql code">NORMALIZING T-SQL CODE</A></LI>
+	<LI><A HREF="#example">EXAMPLE</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>compareSPs - Compare two stored procedures for difference</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl compareSPs.pl -S&lt;Server name&gt; -D&lt;Database name&gt; -P&lt;SP Name&gt;
+                        -s&lt;Server name&gt; -d&lt;Database name&gt; -p&lt;SP Name&gt;
+                        -c 
+                        -i</PRE>
+<P>The upper case arguments introduce one stored procedure, and the lower case arguments introduce
+another.</P>
+<P>The -c argument makes the string comparison case insensitive, and the -i argument instructs the script
+to ignore any difference in whitespaces.</P>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script compares two stored procedures to see whether they are the same. If they are different, 
+it prints the first 22 characters of each SP from where the two start to differ.</P>
+<P>The approach is to (1) retrieve the information about the stored procedures from online SQL Server
+instances and script them
+using SQL-DMO, (2) store the information in a Perl data structure, and (3) compare 
+the two data structures.</P>
+<P>For the T-SQL code, the script calls the function <EM>dbaScriptSP()</EM> to generate the T-SQL scripts for the two
+stored procedures. 
+The <EM>dbScriptSP()</EM> is exported from the module SQLDBA::SQLDMO. The script then calls the function
+<EM>dbaStringDiff()</EM> imported from the module SQLDBA::Utility to compare the two SPs as two strings.</P>
+<P>Note that, in addition to comparing the text of the T-SQL code, you also need to compare the
+properties of the two stored procedures. The script compares two stored procedures with respect 
+to the following four properties:</P>
+<UL>
+<LI><STRONG><A NAME="item_its_ANSI_Null_status">its ANSI Null status</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_its_owner">its owner</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_its_Quoted_Identifier_status">its Quoted Identifier status</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_is_it_marked_for_startup%3F">is it marked for startup?</A></STRONG><BR>
+
+</UL>
+<P>
+<HR>
+<H1><A NAME="data structure">DATA STRUCTURE</A></H1>
+<P>The script stores the information about a stored procedure in a hash with its values corresponding to 
+the above four properties. In additon, the T-SQL code of the stored procedure is also stored as
+a hash value.</P>
+<P>The following is an example of the data structure that stores the information about a stored
+procedure:</P>
+<PRE>
+ $spRef = {
+           'Script' =&gt; 'CREATE PROC testSP
+                        AS
+                        -- a very simple test SP
+                          SELECT @@version
+                        GO',
+           'QuotedIdentifierStatus' =&gt; 1,
+           'Owner' =&gt; 'dbo',
+           'AnsiNullsStatus' =&gt; 1,
+           'Startup' =&gt; 0
+         };</PRE>
+<P>When you have retrieved the information about the two stored procedures and stored the information 
+in two hashes similar to the
+one shown above, comparing the two hashes is all you need to do in order to find whether the two 
+stored procedures are different and exactly what are the differences. The function
+<EM>compareSP()</EM> defined in the script performs the hash comparison.</P>
+<P>
+<HR>
+<H1><A NAME="normalizing tsql code">NORMALIZING T-SQL CODE</A></H1>
+<P>The script accepts a -i command line switch, which instructs the script to ignore any whitespace 
+difference. It turns out to be non-trivial to identify the real whitespaces. Once they 
+are identified, to ignore them in the comparison is to first collapse multiple consecutive whitespaces
+into a single whitespace before the comparison.</P>
+<P>The typical whitespace character include: a space, a tab, and a newline</P>
+<P>The following may look like whitespace, but are in fact significant:</P>
+<UL>
+<LI><STRONG><A NAME="item_Anything_inside_a_quoted_string">Anything inside a quoted string</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_Anything_inside_a_double_quoted_identifier">Anything inside a double quoted identifier</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_Anything_inside_a_square_brcket_quoted_identifier">Anything inside a square brcket quoted identifier</A></STRONG><BR>
+
+<LI><STRONG><A NAME="item_Anything_inside_a_comment">Anything inside a comment</A></STRONG><BR>
+
+</UL>
+<P>The function <EM>dbaNormlizeSQL()</EM> is called to replace a quoted string, a delimited identifier, 
+or a comment with a unique alphanumeric string. You can then search the <EM>normalized</EM> T-SQL code
+for any pattern you may care to search without tripping over any significant tabs, spaces, and delimited
+identifiers, and comments. In this script, the normalized T-SQL script allows us to collapse whitespaces
+without changing any significant tabs, spaces, identifiers, or comments.</P>
+<P>After the script finishes collapsing the whitespaces, it replaces the unique strings introduced by the
+function <EM>dbaNormalizeSQL()</EM> with their corresponding originals, and restores the T-SQL code
+to its original minus the collapsed whitespaces.
+The function for accomplishing this is <EM>dbaRestoreSQL()</EM>.</P>
+<P>The function <EM>dbaNormalizeSQL()</EM> is generally useful when dealing with T-SQL scripts,
+and you'll see it used in many scripts in this book.</P>
+<P>
+<HR>
+<H1><A NAME="example">EXAMPLE</A></H1>
+<P>The following is an example of running the script to compare two stored procedures in two pubs databases 
+on two named instances on the local server.
+The best way to see how the script behaves is to modify one of stored procedures, and then run the script
+to see how it reports the difference.</P>
+<PRE>
+ cmd&gt;perl compareSPs.pl -S.\apollo -Dpubs -Pdbo.byroyalty -s.\pantheon -d pubs -p dbo.byroyalty
+ Comparing (1) .\apollo.pubs.dbo.byroyalty (2) .\pantheon.pubs.dbo.byroyalty
+   Checking SP property diff ...
+   AnsiNullsStatus: (1)=0, (2)=1</PRE>
+<PRE>
+   Comparing SP code diff ...
+   Differing position: 48
+             line num: 3
+           difference: (1) /* Here are some /* k &lt;&gt; (2) select au_id from title</PRE>
+<P>This example shows that the ANSI Nulls setting for the two stored procedures are different. The
+two stored procedures also start to become different t charcter position 48 on line 3. From position 
+48 onward, the stored procedure <EM>byroyalty</EM> on the instance .\apollo includes the following string:</P>
+<PRE>
+ /* Here are some /* k &lt;&gt;
+</PRE>
+<PRE>
+
+And the stored procedure I&lt;byroylty&gt; on the instance .\pntheon includes the following string:</PRE>
+<PRE>
+ select au_id from title</PRE>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;compareSPs - Compare two stored procedures for difference</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

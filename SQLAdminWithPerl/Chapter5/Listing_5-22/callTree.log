@@ -1,0 +1,8 @@
+Call tree for: dbo.spCall
+       --> pubs.dbo.spCall2
+             --> pubs.dbo.spCall3
+                   --> Northwind.dbo.reptq4
+                         --> Northwind.dbo.reptq5
+             --> pubs.dbo.reptq2
+       --> pubs.dbo.reptq1
+       --> pubs.dbo.reptq3

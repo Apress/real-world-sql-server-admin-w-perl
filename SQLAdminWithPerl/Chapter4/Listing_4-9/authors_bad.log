@@ -1,0 +1,5 @@
+***Err: column 1722-32-1176 failed to match pattern (?-xism:^\d{3}\-\d{2}\-\d{4}$)
+        for row 1722-32-1176|Linchi|Victor|408 496-7223|10932 Bigge Rd.|Menlo Park|CA|94025|1
+
+23 rows checked in total.
+1 rows mismatched.

@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>sortSPFiles - Sort stored procedure script files by dependency</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;sortSPFiles - Sort stored procedure script files by dependency</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#sample output">SAMPLE OUTPUT</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>sortSPFiles - Sort stored procedure script files by dependency</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+  cmd&gt;perl sortSPFiles.pl [-c ] [-o &lt;owner&gt;] -d &lt;db&gt; -f &lt;T-SQL files&gt;
+</PRE>
+<PRE>
+
+  Options:
+     -d    set the default database name
+     -o    set the default object owner name
+     -c    1 = case sensitive, 0 = case insensitive
+     -f    names of the T-SQL script files, wildcards are OK</PRE>
+<P>
+<HR>
+<H1><A NAME="sample output">SAMPLE OUTPUT</A></H1>
+<PRE>
+ cmd&gt;perl sortSPFiles.pl -d pubs -f .\test\*.* 
+    .\test\reptq2.PRC
+    .\test\reptq1.PRC
+    .\test\anotherSP.PRC
+    .\test\anSP_0.PRC
+    .\test\anSP.PRC
+    .\test\poorly_NamedSP.PRC</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>You can reduce this problem to the one solved with the script <EM>sortSPs.pl</EM> in Listing 5-28.
+The following are the steps to reuse the code in the script <EM>sortSPs.pl</EM> from Listing 5-28:</P>
+<OL>
+<LI>
+Scan through all the T-SQL scripts to generate a mapping from each stored procedure name 
+to the name of a file, where the stored procedure is defined.
+<P></P>
+<LI>
+Concatenate all the T-SQL scripts into a single string and use the code in Listing 5-28 to 
+generate a hash of arrays, recording the immediate dependencies among the stored procedures.
+<P></P>
+<LI>
+Use the mapping obtained in step 1 to convert the hash of arrays to record the immediate 
+dependencies among the script files.
+<P></P>
+<LI>
+Use the function <EM>sortObjs()</EM> in Listing 5-25 to sort the script files.
+<P></P></OL>
+<P>Given the functions and the scripts introduced previously, now you only need to make 
+some minor changes to the code in Listing 5-28 to implement these steps.</P>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<PRE>
+ 2003.01.27</PRE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;sortSPFiles - Sort stored procedure script files by dependency</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

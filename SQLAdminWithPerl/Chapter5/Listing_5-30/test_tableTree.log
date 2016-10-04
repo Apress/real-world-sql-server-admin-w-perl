@@ -1,0 +1,7 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter5\TableTree>perl tableTree.pl -S .\apollo -D pubs -T dbo.titleauthor 
+Table reference tree for: dbo.titleauthor
+       --> [dbo].[titles]
+             --> [dbo].[publishers]
+                   --> [dbo].[countries]
+       --> [dbo].[authors]

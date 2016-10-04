@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<TITLE>BCPRowCompare - Compare numbers of rows BCPed in and BCPed out</TITLE>
+<LINK REV="made" HREF="mailto:">
+</HEAD>
+
+<BODY>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;BCPRowCompare - Compare numbers of rows BCPed in and BCPed out</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+<A NAME="__index__"></A>
+<!-- INDEX BEGIN -->
+
+<UL>
+
+	<LI><A HREF="#name">NAME</A></LI>
+	<LI><A HREF="#synopsis">SYNOPSIS</A></LI>
+	<LI><A HREF="#description">DESCRIPTION</A></LI>
+	<LI><A HREF="#author">AUTHOR</A></LI>
+	<LI><A HREF="#version">VERSION</A></LI>
+</UL>
+<!-- INDEX END -->
+
+<HR>
+<P>
+<H1><A NAME="name">NAME</A></H1>
+<P>BCPRowCompare - Compare numbers of rows BCPed in and BCPed out</P>
+<P>
+<HR>
+<H1><A NAME="synopsis">SYNOPSIS</A></H1>
+<PRE>
+ cmd&gt;perl BCPRowCompare.pl -i &lt;BCP in log file&gt; -o &lt;BCP out log file&gt;</PRE>
+<P>
+<HR>
+<H1><A NAME="description">DESCRIPTION</A></H1>
+<P>This script was written to (1) retrieve, from a BCP-in log file, the numbers of rows bulk copied 
+out of SQL Server database tables, (2) retrieve, from a BCP-out log file, the numbers of rows bulk 
+copied into SQL Server database 
+tables, and (3) compare the number of rows BCPed in with the number of rows BCPed out for each
+table. The script simplifies the validation process when a large number of tables has to be 
+migrated using the SQL Server bulk copy utility.</P>
+<P>The output of the bulk copying all the tables should be directed to the same log file introduced 
+by -i option, while all the output of bulk copying out data from all the tables should be 
+directed to a single log file as specified by -o option.</P>
+<P>The comparison is conducted in two steps:</P>
+<DL>
+<DT><STRONG><A NAME="item_Step_1">Step 1</A></STRONG><BR>
+<DD>
+The script reads the BCP-in log file and records the number of rows BCPed for each table, and the 
+script then reads the BCP-out
+log file to record the number of rows BCPed out for each table.
+<P></P>
+<DT><STRONG><A NAME="item_Step_2">Step 2</A></STRONG><BR>
+<DD>
+For each table, the script compares the recorded number of rows BCPed in with the number of rows BCPed out,
+and reports the difference, if any.
+<P></P></DL>
+<P>
+<HR>
+<H1><A NAME="author">AUTHOR</A></H1>
+<P>Linchi Shea</P>
+<P>
+<HR>
+<H1><A NAME="version">VERSION</A></H1>
+<P>2002.01.14</P>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR><TD CLASS=block VALIGN=MIDDLE WIDTH=100% BGCOLOR="#cccccc">
+<FONT SIZE=+1><STRONG><P CLASS=block>&nbsp;BCPRowCompare - Compare numbers of rows BCPed in and BCPed out</P></STRONG></FONT>
+</TD></TR>
+</TABLE>
+
+</BODY>
+
+</HTML>

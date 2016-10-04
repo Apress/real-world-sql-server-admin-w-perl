@@ -1,0 +1,32 @@
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\BCPRowCompare>bcp pubs..authors out authors.txt -c -S.\APOLLO -T  
+
+Starting copy...
+
+23 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.): total        1
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\BCPRowCompare>bcp pubs..discounts out discounts.txt -c -S.\APOLLO -T 
+
+Starting copy...
+
+3 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.): total        1
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\BCPRowCompare>bcp pubs..jobs out jobs.txt -c -S.\APOLLO -T  
+
+Starting copy...
+
+14 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.): total        1
+
+D:\DBA\Articles\PERLSQ~1\Chapter4\BCPRowCompare>bcp pubs..titles out titles.txt -c -S.\APOLLO -T  
+
+Starting copy...
+
+18 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.): total        1

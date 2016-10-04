@@ -1,0 +1,10 @@
+[TradeDB]       
+dataFile = d:\sql\data\TradeDB.mdf
+logFile = e:\sql\data\TradeDB_log1.ldf
+logFile = e:\sql\data\TradeDB_log2.ldf
+
+[EquityDB]
+dataFile = d:\sql\data\EquityDB.mdf
+dataFile = d:\sql\data\EquityDB_1.ndf
+logFile = e:\sql\data\EquityDB_log1.ldf
+

@@ -1,0 +1,7 @@
+Comparing (1) .\apollo.pubs.byroyalty (2) .\pantheon.pubs.byroyalty
+   Checking SP property diff ...
+	AnsiNullsStatus: (1)=0, (2)=1
+
+   Comparing SP code diff ...
+	Differing position: 46
+	        difference: /* Here are some commn

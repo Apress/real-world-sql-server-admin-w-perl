@@ -1,0 +1,5 @@
+$VAR1 = {
+          'o' => 1,
+          'p' => 'output.log',
+          'i' => 'error.log'
+        };
